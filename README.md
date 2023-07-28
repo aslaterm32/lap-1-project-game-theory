@@ -27,6 +27,7 @@ SO THAT I can explore game-theory and economics without being bored
 This is a basic static front-end website deployment which can be deployed on any server or client with a browser. [The GIThub page deployment]
 
 ## Credits
+Ralph Cox, Camille Francis, Emre Duzgun, Alex Slater
 
 ## Licence
 
