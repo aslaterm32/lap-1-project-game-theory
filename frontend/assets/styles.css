@@ -1,6 +1,8 @@
 body {
     text-align: center;
+    background-color: #FFF9F0;
 }
+
 
 #logo {
     height: 100px;
@@ -15,11 +17,33 @@ body {
 
 /* results page */
 
-#results-flex-row {
+.results-flex-row {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+header {                        /* entire header is flex col with */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: #fcf1e1;
+    padding-top: 10px;
+}
 
+#logo-results {
+    height: 50px;
+    width: 50px;
+    justify-self: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 2px solid black;
+}
 
+.results-table {
+    background-color: rgb(207, 207, 207);
+    padding: 15px;
+    border-radius: 20%;
+}
