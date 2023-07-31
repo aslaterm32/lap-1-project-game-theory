@@ -3,6 +3,7 @@ const moves = ['l', 'h']
 let currentQuarter = 1
 let profit
 let playerMove
+let revenue
 
 // main game loop
 do {
@@ -14,7 +15,7 @@ do {
     revenue += profit
     console.log(`Profit: ${profit}`)
     currentQuarter++
-    process.stdout.write('\n')
+    console.log('\n')
 } while (currentQuarter < 5)
 
 // prompts player for move and cleans input
