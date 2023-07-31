@@ -1,8 +1,4 @@
-header {
-    text-align: center;
-}
-
-section {
+body {
     text-align: center;
 }
 
@@ -10,7 +6,8 @@ section {
     height: 100px;
 }
 
-#choiceSection {
+#choiceSection,
+#navSection {
     display: flex;
     flex-direction: column;
 }
