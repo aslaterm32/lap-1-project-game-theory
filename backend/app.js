@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const logger = require("./logger");
 const results = require("./results");
+const fs = require("fs");
 
 const app = express();
 
@@ -24,6 +25,26 @@ app.get("/results", (req, res) => {
 
 app.post("/results", (req, res) => {
   const newResult = req.body;
+  //  results.push(req.body);
+  res.status(201).send("Added a post");
+
+  fs.readFile("results.json", "utf8", function readFileCallback(err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      obj = JSON.parse(data); //now it an object
+      obj.push(req.body); //add some data
+      json = JSON.stringify(obj); //convert it back to json
+      fs.writeFile("results.json", json, "utf8", callback); // write it back
+    }
+  });
 });
 
+function callback(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("File successfully written.");
+  }
+}
 module.exports = app;
