@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./styles.css" />
+        <title>Document</title>
+        <script defer src="./game.js"></script>
+    </head>
+    <body>
+        <header>
+            <img
+                id="logo"
+                src="./images/logo-placeholder-image.png"
+                onclick="location.href='../index.html'"
+            />
+        </header>
+        <section id="infoSection">
+            <div>
+                <p id="roundNumberBox">2/10</p>
+                <p id="previousMoveBox">Previous Move: High</p>
+                <p id="marketMoveBox">Market Previous Move: Low</p>
+            </div>
+        </section>
+        <section id="scoreSection">
+            <p>Revenue: £3000</p>
+        </section>
+        <section id="choiceSection">
+            <button id="buttonHigh">High</button>
+            <button id="buttonLow">Low</button>
+        </section>
+    </body>
+</html>

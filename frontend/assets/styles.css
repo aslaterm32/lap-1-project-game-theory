@@ -1,0 +1,16 @@
+header {
+    text-align: center;
+}
+
+section {
+    text-align: center;
+}
+
+#logo {
+    height: 100px;
+}
+
+#choiceSection {
+    display: flex;
+    flex-direction: column;
+}
