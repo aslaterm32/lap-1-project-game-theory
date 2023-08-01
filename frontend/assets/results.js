@@ -37,11 +37,11 @@ function makeNewResult(dataFromFetch) {
   }
 }
 
-
+//The starting function that links into the others.
 async function getResults() {
   let newData = []
     try{
-      const result = await fetch("http://localhost:3001/results")
+      const result = await fetch("https://game-theory-d7wp.onrender.com/results")
       const data = await result.json()
       for (const gameDataset of data) {
         newData.push(gameDataset)
@@ -54,3 +54,6 @@ async function getResults() {
   }
 
 getResults();
+
+
+// feel free to use console logs to see how the data changes along the way

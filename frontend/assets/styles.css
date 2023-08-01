@@ -95,6 +95,7 @@ button:hover {
   }
   .results-section{
     min-width: 500px;
+    margin-bottom: 1em;
   }
  .game-num{
   margin-right: 2em;
