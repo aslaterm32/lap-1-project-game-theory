@@ -1,26 +1,18 @@
 [
     {
-        "id": 0,
         "strategy": "text",
         "userScore": [],
         "userChoice": [],
         "appScore": [],
-        "appChoice": []
+        "appChoice": [],
+        "id": 0
     },
     {
-        "id": 1,
-        "strategy": "tixt",
-        "userScore": [],
-        "userChoice": [],
-        "appScore": [],
-        "appChoice": []
-    },
-    {
-        "id": 2,
-        "strategy": "tixt",
-        "userScore": [],
-        "userChoice": [],
-        "appScore": [],
-        "appChoice": []
+        "strategy": "random",
+        "userScore": [14000],
+        "userChoice": ["h", "l", "h", "l", "h", "l", "h", "l", "h", "h"],
+        "appScore": [17000],
+        "appChoice": ["l", "h", "h", "l", "h", "l", "h", "h", "l", "l"],
+        "id": 1
     }
 ]
