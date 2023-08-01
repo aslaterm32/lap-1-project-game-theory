@@ -10,14 +10,16 @@
   </head>
   <body>
     <header>
-      <img
-        id="logo"
-        src="./images/logo-placeholder-image.png"
-        onclick="location.href='../index.html'"
-      />
+        <a href="../index.html">
+            <img
+                id="logo"
+                src="./images/logo-placeholder-image.png"
+            />
+        </a>
     </header>
     <h1>Results</h1>
     <main>
+<<<<<<< HEAD
       <section id="results-section">
         <div class="result-set">
           <div class="hidden" class="results-shrunk">
@@ -40,6 +42,39 @@
           </div>
         </div>
       </section>
+=======
+        <section id="buttons">
+            <button id="backHomeButton" onclick="location.href='../index.html'">Back to home</button>
+        </section>
+        <section id="results-section">
+            <div class="container">
+                <div class="results-flex-row">
+                    <div class="flex-items">
+                        <table class="results-table">
+                            <tr>
+                            <th>AI:</th>
+                            <td class="ai-type">Tit for Tat</td>
+                            </tr>
+                            <tr>
+                            <th>Revenue:</th>
+                            <td class="pl-rev-data">£3000</td>
+                            <th>AI Revenue:</th>
+                            <td class="ai-rev-data">£5000</td>
+                            </tr>
+                            <tr>
+                            <th>Player Moves:</th>
+                            <td class="pl-moves-data">H, L, L, H, L</td>
+                            <th>AI Moves:</th>
+                            <td class="ai-moves-data">H, L, L, L, H</td>
+                            <th>Game Duration</th>
+                            <td class="game-duration">5.79 seconds</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+>>>>>>> d6c7419019ad005754d577a033d814c256753e49
     </main>
   </body>
 </html>

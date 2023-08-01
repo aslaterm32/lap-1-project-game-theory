@@ -25,7 +25,7 @@ function makeNewResult() {
 
 
 async function getResults() {
-    const result = await fetch("https://127.0.0.1:3000/results")
+    const result = await fetch("http://localhost:3000/results")
         .then((resp) => {
             resp.json()
         })
