@@ -1,18 +1,1 @@
-[
-    {
-        "strategy": "text",
-        "userScore": [],
-        "userChoice": [],
-        "appScore": [],
-        "appChoice": [],
-        "id": 0
-    },
-    {
-        "strategy": "random",
-        "userScore": [14000],
-        "userChoice": ["h", "l", "h", "l", "h", "l", "h", "l", "h", "h"],
-        "appScore": [17000],
-        "appChoice": ["l", "h", "h", "l", "h", "l", "h", "h", "l", "l"],
-        "id": 1
-    }
-]
+[{"strategy":"text","userScore":[],"userChoice":[],"appScore":[],"appChoice":[],"id":0},{"strategy":"random","userScore":[14000],"userChoice":["h","l","h","l","h","l","h","l","h","h"],"appScore":[17000],"appChoice":["l","h","h","l","h","l","h","h","l","l"],"id":1},{"strategy":"alternate","userScore":[21000],"userChoice":["l","l","l","l","l","l","l","l","l","l","l"],"appScore":[6000],"appChoice":["l","h","l","h","l","h","l","h","l","h","l"],"duration":[0],"id":2},{"strategy":"random","userScore":[16000],"userChoice":["h","h","h","h","h","h","h","h","h","h","h"],"appScore":[25000],"appChoice":["h","h","l","l","h","h","h","h","l","h","h"],"duration":[0],"id":3},{"strategy":"random","userScore":[10000],"userChoice":["h","h","h","h","h","h","h","h","h","h","h"],"appScore":[28000],"appChoice":["h","h","h","l","h","h","l","l","l","l","l"],"duration":[0],"id":4},{"strategy":"random","userScore":[19000],"userChoice":["h","h","h","h","h","h","h","h","l","l","l"],"appScore":[19000],"appChoice":["h","h","l","h","h","h","l","h","h","l","h"],"duration":[0],"id":5},{"strategy":"tit-for-tat","userScore":[22000],"userChoice":["h","h","h","h","h","h","h","h","h","h","h"],"appScore":[22000],"appChoice":["h","h","h","h","h","h","h","h","h","h","h"],"duration":[0],"id":6},{"strategy":"alternate","userScore":[15000],"userChoice":["h","h","h","h","h","h","l","l","l","l","l"],"appScore":[18000],"appChoice":["l","h","l","h","l","h","l","h","l","h","l"],"duration":[0],"id":7},{"strategy":"tit-for-tat","userScore":[17000],"userChoice":["l","l","l","l","h","h","h","h","l","l","l"],"appScore":[14000],"appChoice":["h","l","l","l","l","h","h","h","h","l","l"],"duration":6,"id":8},{"strategy":"random","userScore":[11000],"userChoice":["h","l","l","l","l","h","h","h","h","l","h"],"appScore":[20000],"appChoice":["h","l","h","l","l","h","l","l","l","l","l"],"duration":5.766,"id":9},{"strategy":"tit-for-tat","userScore":[13000],"userChoice":["l","l","l","l","l","l","l","l","l","l","l"],"appScore":[10000],"appChoice":["h","l","l","l","l","l","l","l","l","l","l"],"duration":2.155,"id":10},{"strategy":"random","userScore":[15000],"userChoice":["h","h","h","h","h","h","l","h","h","h"],"appScore":[21000],"appChoice":["l","h","h","h","h","l","l","h","h","h"],"duration":4.304,"id":11},{"strategy":"random","userScore":[8000],"userChoice":["h","h","h","h","h","h","h","h","h","h","h"],"appScore":[29000],"appChoice":["l","l","l","h","h","l","l","h","l","h","l"],"duration":2.261,"id":12}]
