@@ -1,49 +1,108 @@
 body {
-    text-align: center;
-    background-color: #FFF9F0;
+  /* center everything */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* fill the page */
+  height: 100vh;
+  background-color: #ddd;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
+header {
+  /* center */
+  display: flex;
+  justify-content: center;
+  /* full width */
+  width: 100vw;
+  /* align-items: center; */
+  /* height: auto; */
+  background-color: #000;
+  margin-bottom: 1em;
+}
 
 #logo {
-    height: 100px;
+  height: 100px;
 }
 
-#choiceSection,
+#tutorialSection {
+  /* breathing */
+  margin: 0 2em;
+  /* readability */
+  max-width: 80ch;
+}
+
+h1,
+h2 {
+  /* space  & grouping*/
+  margin: 0.5em 0 0.2em 0;
+  font-size: 2em;
+}
+
 #navSection {
-    display: flex;
-    flex-direction: column;
+  margin: 2em;
+  display: flex;
+  justify-content: space-evenly;
+}
+button {
+  margin: 1em;
+  padding: 1em;
+  display: inline;
+  min-width: 8em;
+  border-radius: 1em;
 }
 
-
+button:hover {
+  background-color: #ddd;
+}
 /* results page */
 
-.results-flex-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#results-section {
+  background-color: #aaa;
+  text-align: left;
+  padding: 1em 2em;
+  border-radius: 2em;
+  line-height: 1.5em;
+  display: flex;
+  flex-direction: column;
 }
 
-header {                        /* entire header is flex col with */
+#strategyRow {
+  margin-bottom: 1em;
+}
+
+
+/* breathing */
+#playerRow {
+  margin-bottom: 0.5em;
+}
+
+/* Responsive */
+@media only screen and (min-width: 600px) {
+  #playerRow,
+  #aiRow {
     display: flex;
-    flex-direction: column;
+    min-width: 500px;
     justify-content: center;
-    align-items: center;
-    height: auto;
-    background-color: #fcf1e1;
-    padding-top: 10px;
+    gap: 2em;
+  }
+  #strategyRow {
+    margin-bottom: 0.5em;
+  }
+  #aiData .moves{
+    text-align: right;
+  }
 }
 
-#logo-results {
-    height: 50px;
-    width: 50px;
-    justify-self: center;
-    background-color: rgb(255, 255, 255);
-    border-radius: 50%;
-    border: 2px solid black;
-}
+/* .results-flex-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
 
-.results-table {
-    background-color: rgb(207, 207, 207);
-    padding: 15px;
-    border-radius: 20%;
-}
+/* .results-table {
+  background-color: rgb(207, 207, 207);
+  padding: 15px;
+  border-radius: 20%;
+} */
