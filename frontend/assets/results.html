@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bellCSSreset.css" />
+    <link rel="stylesheet" href="./styles.css" />
     <title>Game Theory Results</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div id="logo-results">
-            <p class="logo-text">GT</p>
-        </div>
-        <h1>Results</h1>
+      <img
+        id="logo"
+        src="./images/logo-placeholder-image.png"
+        onclick="location.href='../index.html'"
+      />
     </header>
+    <h1>Results</h1>
     <main>
-        <section id="results-section">
-            <div class="container">
-                <div class="results-flex-row">
-                    <div class="flex-items">
-                        <table class="results-table">
+      <section id="results-section">
+        <h3 id="strategyRow">Strategy: Tit for Tat</h3>
+        <div id="playerRow">
+          <div class="playerData revenue">Player Revenue: £3000</div>
+          <div class="playerData moves">Player Moves: H, L, L, H, L</div>
+        </div>
+        <div id="aiRow">
+          <div class="aiData revenue">AI Revenue: £5000</div>
+          <div class="aiData moves">AI Moves: H, L, L, L, H</div>
+        </div>
+        <!-- <div class="container">
+                <div class="results-flex-row"> -->
+        <!-- <div class="flex-items"> -->
+
+        <!-- remove table due to low responsiveness -->
+        <!-- <table class="results-table">
                            <tr>
                             <th>AI:</th>
                             <td class="ai-type">Tit for Tat</td>
@@ -35,11 +49,11 @@
                             <th>AI Moves:</th>
                             <td class="ai-moves-data">H, L, L, L, H</td>
                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
+                        </table> -->
+        <!-- </div> -->
+        <!-- </div>
+            </div> -->
+      </section>
     </main>
-</body>
+  </body>
 </html>
