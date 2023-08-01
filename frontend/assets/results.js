@@ -15,18 +15,6 @@ function cloneResultSet() {
 //     console.log(resu[index])
 //     // resultParent.append(cloneData)
 // }
-
-function makeNewResult(dataFromFetch) {
-
-  for (let i = 0; i < dataFromFetch.length; i++){
-    console.log(dataFromFetch[i])
-    let clonedData = cloneResultSet()
-    clonedData.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`
-    formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
-    // clonedData.querySelector('completion-date-time-data').textContent = 0
-  }
-}
-
 function processTimestamp(resultTS) {
   console.log(resultTS)
   const year = resultTS.slice(0,4)
@@ -34,8 +22,30 @@ function processTimestamp(resultTS) {
   const day = resultTS.slice(8,10)
   const time = resultTS.slice(11,19)
   newTimestamp = day.concat("/", month, "/", year, "  ", time)
-  console.log(newTimestamp)
+  return newTimestamp
 }
+
+function makeNewResult(dataFromFetch) {
+  let formattedTimestamp = ""
+  for (let i = 0; i < dataFromFetch.length; i++){
+    if (resultSection.attributes.length =1){
+      resultSection.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`;
+      resultSection.querySelector('.completion-title').textContent = 'Completed: ';
+      formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
+      resultSection.querySelector('completion-date-time-data').textContent = formattedTimestamp
+      
+    } else{
+      console.log(dataFromFetch[i])
+      let clonedData = cloneResultSet()
+      clonedData.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`
+      formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
+      clonedData.querySelector('completion-date-time-data').textContent = formattedTimestamp
+      resultParent.Child(clonedData)
+    }
+  }
+}
+
+
 
 
 // result-id
