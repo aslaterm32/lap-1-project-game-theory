@@ -144,6 +144,6 @@ async function postObject(obj) {
         body: data,
     }
     console.log(data)
-    await fetch(`http://127.0.0.1:3000/results`, options)
+    await fetch('https://game-theory-d7wp.onrender.com/results', options)
     window.location.replace('./results.html')
 }
