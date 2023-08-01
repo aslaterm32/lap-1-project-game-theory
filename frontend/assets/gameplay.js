@@ -8,7 +8,11 @@ const gameObject = {
     userChoice: [],
     appScore: [0],
     appChoice: [],
+    duration: [0]
 }
+
+const startTime = new Date()
+
 let currentRound = 0
 let userProfit = 0
 let appProfit = 0
@@ -54,6 +58,10 @@ function handleButtonPressed(event) {
     currentRound++
     updateUI()
     if (currentRound >= 10) {
+        const endTime = new Date()
+        resultDuration = endTime - startTime;
+        resultDuration = resultDuration / 1000 
+        gameObject.duration = resultDuration
         postObject(gameObject)
         window.location.replace('./results.html')
     }

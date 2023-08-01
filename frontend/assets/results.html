@@ -9,51 +9,46 @@
   </head>
   <body>
     <header>
-      <img
-        id="logo"
-        src="./images/logo-placeholder-image.png"
-        onclick="location.href='../index.html'"
-      />
+        <a href="../index.html">
+            <img
+                id="logo"
+                src="./images/logo-placeholder-image.png"
+            />
+        </a>
     </header>
     <h1>Results</h1>
     <main>
-      <section id="results-section">
-        <h3 id="strategyRow">Strategy: Tit for Tat</h3>
-        <div id="playerRow">
-          <div class="playerData revenue">Player Revenue: £3000</div>
-          <div class="playerData moves">Player Moves: H, L, L, H, L</div>
-        </div>
-        <div id="aiRow">
-          <div class="aiData revenue">AI Revenue: £5000</div>
-          <div class="aiData moves">AI Moves: H, L, L, L, H</div>
-        </div>
-        <!-- <div class="container">
-                <div class="results-flex-row"> -->
-        <!-- <div class="flex-items"> -->
-
-        <!-- remove table due to low responsiveness -->
-        <!-- <table class="results-table">
-                           <tr>
+        <section id="buttons">
+            <button id="backHomeButton" onclick="location.href='../index.html'">Back to home</button>
+        </section>
+        <section id="results-section">
+            <div class="container">
+                <div class="results-flex-row">
+                    <div class="flex-items">
+                        <table class="results-table">
+                            <tr>
                             <th>AI:</th>
                             <td class="ai-type">Tit for Tat</td>
-                           </tr>
-                           <tr>
+                            </tr>
+                            <tr>
                             <th>Revenue:</th>
                             <td class="pl-rev-data">£3000</td>
                             <th>AI Revenue:</th>
                             <td class="ai-rev-data">£5000</td>
-                           </tr>
-                           <tr>
+                            </tr>
+                            <tr>
                             <th>Player Moves:</th>
                             <td class="pl-moves-data">H, L, L, H, L</td>
                             <th>AI Moves:</th>
                             <td class="ai-moves-data">H, L, L, L, H</td>
-                           </tr>
-                        </table> -->
-        <!-- </div> -->
-        <!-- </div>
-            </div> -->
-      </section>
+                            <th>Game Duration</th>
+                            <td class="game-duration">5.79 seconds</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
   </body>
 </html>
