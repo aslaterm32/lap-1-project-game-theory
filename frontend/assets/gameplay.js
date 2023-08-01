@@ -56,7 +56,9 @@ function handleButtonPressed(event) {
         gameObject.appScore[0] += appProfit
     }
     currentRound++
-    updateUI()
+    if (currentRound < 10) {
+        updateUI()
+    }
     if (currentRound >= 10) {
         const endTime = new Date()
         resultDuration = endTime - startTime
