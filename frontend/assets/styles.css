@@ -68,6 +68,13 @@ button:hover {
   flex-direction: column;
 }
 
+.date-time-container{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+
 .strategyRow {
   margin-bottom: 1em;
   text-align: center;
