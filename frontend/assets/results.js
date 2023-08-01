@@ -24,13 +24,25 @@ function makeNewResult() {
 // let results = getResults()
 
 
-async function getResults() {
-    const result = await fetch("http://localhost:3000/results")
-        .then((resp) => {
-            resp.json()
-        })
-        .catch((e) => console.log(e))
-}
+// async function getResults() {
+//     const result = await fetch("http://localhost:3000/results")
+//         .then((resp) => {
+//             resp.json()
+//         })
+//         .catch((e) => console.log(e))
+// }
 
-let results = getResults()
-console.log(results)
+// let results = getResults()
+// console.log(results)
+
+async function getResults() {
+    try{
+      const result = await fetch("http://localhost:3000/results")
+      const data = await result.json()
+      return data
+    } catch(e) {
+      console.log(e)
+    }
+  }
+  
+  let results = getResults();

@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "lap1-project-game-theory",
   "version": "1.0.0",
   "description": "An App aimed at creating interest in Game Theory and Economics in year 9 students",
@@ -13,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "prompt-sync": "^4.2.0"
@@ -21,27 +21,4 @@
     "nodemon": "^3.0.1"
   },
   "keywords": []
-=======
-    "name": "lap1-project-game-theory",
-    "version": "1.0.0",
-    "description": "",
-    "main": "proof-of-concept.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "nodemon backend/index.js",
-        "start": "node backend/index.js"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "cors": "^2.8.5",
-        "dotenv": "^16.3.1",
-        "express": "^4.18.2",
-        "fs": "^0.0.1-security",
-        "prompt-sync": "^4.2.0"
-    },
-    "devDependencies": {
-        "nodemon": "^3.0.1"
-    }
->>>>>>> d6c7419019ad005754d577a033d814c256753e49
 }
