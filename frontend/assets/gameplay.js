@@ -53,7 +53,7 @@ function handleButtonPressed(event) {
     }
     currentRound++
     updateUI()
-    if (currentRound > 10) {
+    if (currentRound >= 10) {
         postObject(gameObject)
         window.location.replace('./results.html')
     }
