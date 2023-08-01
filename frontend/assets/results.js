@@ -28,19 +28,19 @@ function processTimestamp(resultTS) {
 function makeNewResult(dataFromFetch) {
   let formattedTimestamp = ""
   for (let i = 0; i < dataFromFetch.length; i++){
-    if (resultSection.attributes.length =1){
+    if (resultSection.querySelector('.game-num').textContent != 'Game 1'){
       resultSection.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`;
       resultSection.querySelector('.completion-title').textContent = 'Completed: ';
       formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
-      resultSection.querySelector('completion-date-time-data').textContent = formattedTimestamp
+      resultSection.querySelector('.completion-date-time-data').textContent = formattedTimestamp
       
     } else{
       console.log(dataFromFetch[i])
       let clonedData = cloneResultSet()
       clonedData.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`
       formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
-      clonedData.querySelector('completion-date-time-data').textContent = formattedTimestamp
-      resultParent.Child(clonedData)
+      clonedData.querySelector('.completion-date-time-data').textContent = formattedTimestamp
+      resultParent.appendChild(clonedData)
     }
   }
 }
