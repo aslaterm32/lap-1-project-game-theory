@@ -20,8 +20,13 @@ let appProfit = 0
 
 gameObject.strategy = getRandomStrategy()
 
-buttonHigh.addEventListener('click', handleButtonPressed)
-buttonLow.addEventListener('click', handleButtonPressed)
+if (buttonHigh) {
+    buttonHigh.addEventListener('click', handleButtonPressed)
+}
+if (buttonLow) {
+
+    buttonLow.addEventListener('click', handleButtonPressed)
+}
 updateUI()
 
 function handleButtonPressed(event) {
@@ -157,4 +162,4 @@ async function postObject(obj) {
     window.location.replace('./results.html')
 }
 
-export {getRandomStrategy, handleButtonPressed, updateUI,storeMove, formatMove, getMarketMove, postObject}
+module.exports = {getRandomStrategy, handleButtonPressed, updateUI,storeMove, formatMove, getMarketMove, postObject}
