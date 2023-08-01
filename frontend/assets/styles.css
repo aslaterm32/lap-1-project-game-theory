@@ -56,7 +56,7 @@ button {
 button:hover {
   background-color: #ddd;
 }
-/* results page */
+/* RESULTS SECTION */
 
 #results-section {
   background-color: #aaa;
@@ -67,30 +67,43 @@ button:hover {
   display: flex;
   flex-direction: column;
 }
+.hidden {
+  display: none;    /* elements no longer displayed with the class*/
+}
 
-#strategyRow {
+.date-time-container{
+  display: flex;
+  flex-direction: row;
+  
+}
+
+
+.strategyRow {
   margin-bottom: 1em;
+  text-align: center;
 }
 
 
 /* breathing */
-#playerRow {
+.playerRow {
   margin-bottom: 0.5em;
 }
 
 /* Responsive */
 @media only screen and (min-width: 600px) {
-  #playerRow,
-  #aiRow {
+
+  .playerRow,
+  .aiRow {
     display: flex;
     min-width: 500px;
     justify-content: center;
     gap: 2em;
   }
-  #strategyRow {
+  
+  .strategyRow {
     margin-bottom: 0.5em;
   }
-  #aiData .moves{
+  .aiData .moves{
     text-align: right;
   }
 }
