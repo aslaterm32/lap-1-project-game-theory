@@ -56,7 +56,7 @@ button {
 button:hover {
   background-color: #ddd;
 }
-/* results page */
+/* RESULTS SECTION */
 
 #results-section {
   background-color: #aaa;
@@ -74,19 +74,20 @@ button:hover {
 
 
 /* breathing */
-#playerRow {
+.playerRow {
   margin-bottom: 0.5em;
 }
 
 /* Responsive */
 @media only screen and (min-width: 600px) {
-  #playerRow,
-  #aiRow {
+  .playerRow,
+  .aiRow {
     display: flex;
     min-width: 500px;
     justify-content: center;
     gap: 2em;
   }
+  
   #strategyRow {
     margin-bottom: 0.5em;
   }
