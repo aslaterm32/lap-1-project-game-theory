@@ -37,7 +37,7 @@ function makeNewResult() {
 
 async function getResults() {
     try{
-      const result = await fetch("http://localhost:3000/results")
+      const result = await fetch("https://game-theory-d7wp.onrender.com/")
       const data = await result.json()
       return data
     } catch(e) {
@@ -46,3 +46,5 @@ async function getResults() {
   }
   
   let results = getResults();
+
+  
