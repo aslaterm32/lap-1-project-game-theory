@@ -57,11 +57,10 @@ function handleButtonPressed(event) {
     }
     currentRound++
     updateUI()
-    if (currentRound > 10) {
+    if (currentRound >= 10) {
         const endTime = new Date()
         resultDuration = endTime - startTime;
-        resultDuration = resultDuration / 1000
-        
+        resultDuration = resultDuration / 1000 
         gameObject.duration = resultDuration
         postObject(gameObject)
         window.location.replace('./results.html')
