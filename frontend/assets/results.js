@@ -29,10 +29,12 @@ function makeNewResult(dataFromFetch) {
 
 function processTimestamp(resultTS) {
   console.log(resultTS)
-  let year = resultTS.slice(0, )
-  let time = ""
-  
-  console.log(date)
+  const year = resultTS.slice(0,4)
+  const month = resultTS.slice(5,7)
+  const day = resultTS.slice(8,10)
+  const time = resultTS.slice(11,19)
+  newTimestamp = day.concat("/", month, "/", year, "  ", time)
+  console.log(newTimestamp)
 }
 
 
