@@ -42,6 +42,7 @@ app.get('/results', (req, res) => {
 
 app.post('/results', (req, res) => {
     const newResult = req.body
+    newResult['timestamp'] = new Date()
     newResult['id'] = results.length
     results.push(newResult)
     fs.writeFile('./backend/results.json', JSON.stringify(results), (error) => {
