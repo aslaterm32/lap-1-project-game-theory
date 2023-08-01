@@ -3,48 +3,34 @@ const shrunk = document.querySelector(".results-shrunk")
 
 function cloneResultSet() {
     const resultSetClone = resultSet.cloneNode(true)
+    return resultSetClone
 }
 
-function makeNewResult() {
-    cloneResultSet
+function makeNewResult(dataFromFetch) {
+  console.log(dataFromFetch)
+    let cloneData = cloneResultSet()
+    console.log(cloneData)
 }
 
 
 // document.addEventListener("load", )
 
-// async function getResults(){
-//     let resultsList = []
-//     const fetchedResults = await fetch ("http://localhost:3000/results")
-
-//     const result = await fetchedResults.json()
-
-// }
-
-
-// let results = getResults()
-
-
-// async function getResults() {
-//     const result = await fetch("http://localhost:3000/results")
-//         .then((resp) => {
-//             resp.json()
-//         })
-//         .catch((e) => console.log(e))
-// }
-
-// let results = getResults()
-// console.log(results)
-
 async function getResults() {
+  let newData = []
     try{
-      const result = await fetch("https://game-theory-d7wp.onrender.com/")
+      const result = await fetch("http://localhost:3000/results")
       const data = await result.json()
-      return data
+      for (const gameDataset of data) {
+        newData.push(gameDataset)
+      }
+      for (let i = 0; i < newData.length; i++){
+        makeNewResult(newData[i])
+      }
+
     } catch(e) {
       console.log(e)
     }
   }
-  
-  let results = getResults();
 
-  
+
+getResults();
