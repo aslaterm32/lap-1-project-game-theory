@@ -67,9 +67,8 @@ button:hover {
   display: flex;
   flex-direction: column;
 }
-
-.visible {
-  display: none;
+.hidden {
+  display: none;    /* elements no longer displayed with the class*/
 }
 
 .date-time-container{
