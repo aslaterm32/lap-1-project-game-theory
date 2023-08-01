@@ -68,6 +68,10 @@ button:hover {
   flex-direction: column;
 }
 
+.visible {
+  display: none;
+}
+
 .date-time-container{
   display: flex;
   flex-direction: row;
@@ -88,6 +92,7 @@ button:hover {
 
 /* Responsive */
 @media only screen and (min-width: 600px) {
+
   .playerRow,
   .aiRow {
     display: flex;
@@ -99,7 +104,7 @@ button:hover {
   .strategyRow {
     margin-bottom: 0.5em;
   }
-  #aiData .moves{
+  .aiData .moves{
     text-align: right;
   }
 }
