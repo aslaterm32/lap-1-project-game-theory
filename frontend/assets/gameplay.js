@@ -149,3 +149,5 @@ async function postObject(obj) {
     await fetch('https://game-theory-d7wp.onrender.com/results', options)
     window.location.replace('./results.html')
 }
+
+export {getRandomStrategy, handleButtonPressed, updateUI,storeMove, formatMove, getMarketMove, postObject}
