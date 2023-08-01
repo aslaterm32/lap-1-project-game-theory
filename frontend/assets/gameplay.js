@@ -3,15 +3,17 @@ const buttonLow = document.querySelector('#buttonLow')
 const infoSection = document.querySelector('#infoSection')
 const scoreSection = document.querySelector('#scoreSection')
 const gameObject = {
-    revenue: 0,
-    algorithm: 1,
-    playerMoves: [],
-    marketMoves: [],
+    strategy: '',
+    userScore: [0],
+    userChoice: [],
+    appScore: [0],
+    appChoice: [],
 }
-let currentRound = 1
-let profit = 0
+let currentRound = 0
+let userProfit = 0
+let appProfit = 0
 
-gameObject.algorithm = getRandomAlgorithm()
+gameObject.strategy = getRandomStrategy()
 
 buttonHigh.addEventListener('click', handleButtonPressed)
 buttonLow.addEventListener('click', handleButtonPressed)
@@ -26,24 +28,31 @@ function handleButtonPressed(event) {
         playerMove = 'l'
     }
     storeMove(playerMove, 'player')
-    marketMove = getMarketMove(gameObject.algorithm)
-    console.log(gameObject.algorithm)
+    marketMove = getMarketMove(gameObject.strategy)
     storeMove(marketMove, 'market')
     if (playerMove === 'h' && marketMove === 'h') {
-        profit = 2000
-        gameObject.revenue += profit
+        userProfit = 2000
+        appProfit = 2000
+        gameObject.userScore[0] += userProfit
+        gameObject.appScore[0] += appProfit
     } else if (playerMove === 'h' && marketMove === 'l') {
-        profit = 0
-        gameObject.revenue += profit
+        userProfit = 0
+        appProfit = 3000
+        gameObject.userScore[0] += userProfit
+        gameObject.appScore[0] += appProfit
     } else if (playerMove === 'l' && marketMove === 'h') {
-        profit = 3000
-        gameObject.revenue += profit
+        userProfit = 3000
+        appProfit = 0
+        gameObject.userScore[0] += userProfit
+        gameObject.appScore[0] += appProfit
     } else if (playerMove === 'l' && marketMove === 'l') {
-        profit = 1000
-        gameObject.revenue += profit
+        userProfit = 1000
+        appProfit = 1000
+        gameObject.userScore[0] += userProfit
+        gameObject.appScore[0] += appProfit
     }
-    updateUI()
     currentRound++
+    updateUI()
     if (currentRound > 10) {
         postObject(gameObject)
         window.location.replace('./results.html')
@@ -60,18 +69,25 @@ function formatMove(move) {
 
 function storeMove(move, player) {
     if (player === 'player') {
-        gameObject.playerMoves[currentRound] = move
+        gameObject.userChoice.push(move)
     } else if (player === 'market') {
-        gameObject.marketMoves[currentRound] = move
+        gameObject.appChoice.push(move)
     }
 }
 
-function getRandomAlgorithm() {
-    return (num = Math.floor(Math.random() * 3))
+function getRandomStrategy() {
+    let num = Math.floor(Math.random() * 3)
+    if (num === 0) {
+        return 'random'
+    } else if (num === 1) {
+        return 'tit-for-tat'
+    } else if (num === 2) {
+        return 'alternate'
+    }
 }
 
-function getMarketMove(num) {
-    if (num === 0) {
+function getMarketMove(str) {
+    if (str === 'random') {
         // 0. Random
         let rand = Math.floor(Math.random() * 2)
         if (rand === 0) {
@@ -79,13 +95,13 @@ function getMarketMove(num) {
         } else {
             return 'h'
         }
-    } else if (num === 1) {
+    } else if (str === 'tit-for-tat') {
         // 1. Tit for tat
-        if (currentRound === 1) {
+        if (currentRound === 0) {
             return 'h'
         }
-        return gameObject.playerMoves[currentRound - 1]
-    } else if (num === 2) {
+        return gameObject.userChoice[currentRound - 1]
+    } else if (str === 'alternate') {
         // 2. Alternate
         if (currentRound % 2 === 0) {
             return 'l'
@@ -96,17 +112,28 @@ function getMarketMove(num) {
 }
 
 function updateUI() {
-    infoSection.children[0].textContent = `${currentRound}/10`
+    infoSection.children[0].textContent = `${currentRound + 1}/10`
     if (currentRound > 0) {
         infoSection.children[1].textContent = `Previous Move: ${formatMove(
-            gameObject.playerMoves[currentRound]
+            gameObject.userChoice[currentRound - 1]
         )}`
         infoSection.children[2].textContent = `Market Previous Move: ${formatMove(
-            gameObject.marketMoves[currentRound]
+            gameObject.appChoice[currentRound - 1]
         )}`
     }
-    scoreSection.children[0].textContent = `Profit: £${profit}`
-    scoreSection.children[1].textContent = `Revenue: £${gameObject.revenue}`
+    scoreSection.children[0].textContent = `Profit: +£${userProfit}`
+    scoreSection.children[1].textContent = `Revenue: £${gameObject.userScore[0]}`
 }
 
-async function postObject(obj) {}
+async function postObject(obj) {
+    const data = JSON.stringify(obj)
+    console.log(data)
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: data,
+    }
+    const response = await fetch(`http://127.0.0.1:3000/results`, options)
+}
