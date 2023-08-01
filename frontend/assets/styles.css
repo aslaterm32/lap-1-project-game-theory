@@ -58,14 +58,18 @@ button:hover {
 }
 /* RESULTS SECTION */
 
-#results-section {
+.results-section {
   background-color: #aaa;
   text-align: left;
   padding: 1em 2em;
   border-radius: 2em;
   line-height: 1.5em;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.game-num{
+  text-align: center;
 }
 .hidden {
   display: none;    /* elements no longer displayed with the class*/
@@ -77,35 +81,24 @@ button:hover {
   
 }
 
-
-.strategyRow {
-  margin-bottom: 1em;
-  text-align: center;
-}
-
-
-/* breathing */
-.playerRow {
-  margin-bottom: 0.5em;
-}
-
 /* Responsive */
 @media only screen and (min-width: 600px) {
 
-  .playerRow,
-  .aiRow {
+  .results-section,
+  .hidden,
+  .date-time-container
+  {
     display: flex;
-    min-width: 500px;
     justify-content: center;
     gap: 2em;
+    
   }
-  
-  .strategyRow {
-    margin-bottom: 0.5em;
+  .results-section{
+    min-width: 500px;
   }
-  .aiData .moves{
-    text-align: right;
-  }
+ .game-num{
+  margin-right: 2em;
+ }
 }
 
 /* .results-flex-row {

@@ -18,7 +18,9 @@
     "prompt-sync": "^4.2.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "jest": "^29.6.2",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
   },
   "keywords": []
 }
