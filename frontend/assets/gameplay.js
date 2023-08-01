@@ -8,7 +8,7 @@ const gameObject = {
     userChoice: [],
     appScore: [0],
     appChoice: [],
-    duration: [0]
+    duration: [0],
 }
 
 const startTime = new Date()
@@ -24,8 +24,8 @@ buttonLow.addEventListener('click', handleButtonPressed)
 updateUI()
 
 function handleButtonPressed(event) {
-    let playerMove
     event.preventDefault()
+    let playerMove
     if (event.target.id === 'buttonHigh') {
         playerMove = 'h'
     } else if (event.target.id === 'buttonLow') {
@@ -59,11 +59,11 @@ function handleButtonPressed(event) {
     updateUI()
     if (currentRound >= 10) {
         const endTime = new Date()
-        resultDuration = endTime - startTime;
-        resultDuration = resultDuration / 1000 
+        resultDuration = endTime - startTime
+        resultDuration = resultDuration / 1000
         gameObject.duration = resultDuration
+        console.log(gameObject)
         postObject(gameObject)
-        window.location.replace('./results.html')
     }
 }
 
@@ -143,5 +143,7 @@ async function postObject(obj) {
         },
         body: data,
     }
-    const response = await fetch(`http://127.0.0.1:3000/results`, options)
+    console.log(data)
+    await fetch(`http://127.0.0.1:3000/results`, options)
+    window.location.replace('./results.html')
 }
