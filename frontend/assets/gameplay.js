@@ -9,7 +9,7 @@ const gameObject = {
     appScore: [0],
     appChoice: [],
 }
-let currentRound = 1
+let currentRound = 0
 let userProfit = 0
 let appProfit = 0
 
@@ -51,8 +51,8 @@ function handleButtonPressed(event) {
         gameObject.userScore[0] += userProfit
         gameObject.appScore[0] += appProfit
     }
-    updateUI()
     currentRound++
+    updateUI()
     if (currentRound > 10) {
         postObject(gameObject)
         window.location.replace('./results.html')
@@ -97,7 +97,7 @@ function getMarketMove(str) {
         }
     } else if (str === 'tit-for-tat') {
         // 1. Tit for tat
-        if (currentRound === 1) {
+        if (currentRound === 0) {
             return 'h'
         }
         return gameObject.userChoice[currentRound - 1]
@@ -112,7 +112,7 @@ function getMarketMove(str) {
 }
 
 function updateUI() {
-    infoSection.children[0].textContent = `${currentRound}/10`
+    infoSection.children[0].textContent = `${currentRound + 1}/10`
     if (currentRound > 0) {
         infoSection.children[1].textContent = `Previous Move: ${formatMove(
             gameObject.userChoice[currentRound - 1]
@@ -121,7 +121,7 @@ function updateUI() {
             gameObject.appChoice[currentRound - 1]
         )}`
     }
-    scoreSection.children[0].textContent = `Profit: £${userProfit}`
+    scoreSection.children[0].textContent = `Profit: +£${userProfit}`
     scoreSection.children[1].textContent = `Revenue: £${gameObject.userScore[0]}`
 }
 
