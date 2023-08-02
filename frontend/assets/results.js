@@ -39,6 +39,7 @@ function makeNewResult(dataFromFetch) {
       resultSection.querySelector('.player-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
       resultSection.querySelector('.player-moves').textContent = `Player Choices: ${formatMoveList(dataFromFetch[i].userChoice)}`;
       resultSection.querySelector('.ai-revenue').textContent = `AI Revenue: £${dataFromFetch[i].appScore}`;
+      // resultSection.querySelector('.player-moves').textContent = `Player Choices: ${formatMoveList(dataFromFetch[i].userChoice)}`;
 
       
     } else{
@@ -50,7 +51,7 @@ function makeNewResult(dataFromFetch) {
       clonedData.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`
       clonedData.querySelector('.player-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
       clonedData.querySelector('.player-moves').textContent = `Player Choices: ${formatMoveList(dataFromFetch[i].userChoice)}`;
-      resultSection.querySelector('.ai-revenue').textContent = `AI Revenue: £${dataFromFetch[i].appScore}`;
+      clonedData.querySelector('.ai-revenue').textContent = `AI Revenue: £${dataFromFetch[i].appScore}`;
       resultParent.appendChild(clonedData)
     }
   }
