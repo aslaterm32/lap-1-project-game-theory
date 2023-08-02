@@ -19,20 +19,32 @@ function processTimestamp(resultTS) {
 
 
 function makeNewResult(dataFromFetch) {
-  let formattedTimestamp = ""
-  for (let i = 0; i < dataFromFetch.length; i++){
-    if (resultSection.querySelector('.game-num').textContent != 'Game 1'){
-      resultSection.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`;
-      resultSection.querySelector('.completion-title').textContent = 'Completed: ';
-      formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
-      resultSection.querySelector('.completion-date-time-data').textContent = formattedTimestamp
-      
-    } else{
-      let clonedData = cloneResultSet()
-      clonedData.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`
-      formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
-      clonedData.querySelector('.completion-date-time-data').textContent = formattedTimestamp
-      resultParent.appendChild(clonedData)
+  for (let i = 0; i < dataFromFetch.length; i++) {
+    let resultSet;
+
+    if (i === 0) {
+      resultSet = resultSection;
+    } else {
+      resultSet = cloneResultSet();
+      resultParent.appendChild(resultSet);
+    }
+
+    const gameNumElement = resultSet.querySelector('.game-num');
+    const completionTitleElement = resultSet.querySelector('.completion-title');
+    const dateTimeDataElement = resultSet.querySelector('.completion-date-time-data');
+
+    gameNumElement.textContent = `Game ${dataFromFetch[i].id + 1}`;
+    completionTitleElement.textContent = 'Completed:';
+    dateTimeDataElement.textContent = processTimestamp(dataFromFetch[i].timestamp);
+
+    resultSet.classList.remove('results-win', 'results-loss', 'results-draw');
+
+    if (dataFromFetch[i].userWin === 'win') {
+      resultSet.classList.add('results-win');
+    } else if (dataFromFetch[i].userWin === 'loss') {
+      resultSet.classList.add('results-loss');
+    } else if (dataFromFetch[i].userWin === 'draw') {
+      resultSet.classList.add('results-draw');
     }
   }
 }
@@ -46,6 +58,9 @@ async function getResults() {
       for (const gameDataset of data) {
         newData.push(gameDataset)
       }
+
+      resultSection.classList.remove('results-win', 'results-loss', 'results-draw');
+
       makeNewResult(newData)
 
     } catch(e) {
