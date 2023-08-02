@@ -67,6 +67,22 @@ app.delete('/results', (req, res) => {
     })
 })
 
+app.delete('/results/:id', (req, res) => {
+    const resultId = req.params.id
+    results.splice(resultId, 1)
+    for (let i = 0; i < results.length; i++) {
+        results[i].id = i
+    }
+    fs.writeFile('./backend/results.json', JSON.stringify(results), (error) => {
+        if (error) {
+            console.log(error)
+            res.status(500).send('Failed to delete result')
+        } else {
+            res.status(201).send('Result deleted')
+        }
+    })
+})
+
 // function callback(err) {
 //     if (err) {
 //         console.log(err)
