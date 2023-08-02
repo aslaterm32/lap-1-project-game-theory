@@ -154,8 +154,8 @@ async function getResults() {
 
       resultSection.classList.remove('results-win', 'results-loss', 'results-draw');
       if (!newData.length) {
+        //temporary message if there are no results
         const message = noResultMsg()
-        console.log(message)
       } else {
         makeNewResult(newData)
         addELs()
