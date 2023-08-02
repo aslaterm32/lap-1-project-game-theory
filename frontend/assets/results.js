@@ -34,6 +34,9 @@ function makeNewResult(dataFromFetch) {
       resultSection.querySelector('.completion-title').textContent = 'Completed: ';
       formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
       resultSection.querySelector('.completion-date-time-data').textContent = formattedTimestamp
+      resultSection.addEventListener('click', e => {
+        expandShrink(e)
+      })
       //The expanded results section
       resultSection.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`;
       resultSection.querySelector('.player-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
@@ -55,6 +58,7 @@ function makeNewResult(dataFromFetch) {
       clonedData.querySelector('.ai-moves').textContent = `AI Choices: ${formatMoveList(dataFromFetch[i].appChoice)}`;
       resultParent.appendChild(clonedData)
     }
+    for ()
   }
 }
 
@@ -84,10 +88,6 @@ function expandShrink(ev) {
   const clickedResultSet = ev.currentTarget;
   const compactView = clickedResultSet.querySelector('.results-shrunk')
   if (clickedResultSet.querySelector('.results-expanded').classList.contains('hidden')){
-    console.log("hello")
-    // clickedResultSet.querySelector('.results-shrunk').classList.remove('visible')
-    // clickedResultSet.querySelector('div').classList.add('hidden')
-    // //expand results
     clickedResultSet.querySelector('.results-expanded').classList.remove('hidden')
     clickedResultSet.querySelector('.results-expanded').classList.add('visible')
   } else {
