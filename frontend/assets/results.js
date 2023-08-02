@@ -21,6 +21,11 @@ function capitaliseFirst(word){
   
 }
 
+function formatMoveList(moveSet) {
+  let stringedList = (moveSet.toString()).toUpperCase();
+  return stringedList
+}
+
 function makeNewResult(dataFromFetch) {
   let formattedTimestamp = ""
   for (let i = 0; i < dataFromFetch.length; i++){
@@ -32,7 +37,9 @@ function makeNewResult(dataFromFetch) {
       //The expanded results section
       resultSection.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`;
       resultSection.querySelector('.player-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
-      
+      resultSection.querySelector('.player-moves').textContent = `Player Choices: ${formatMoveList(dataFromFetch[i].userChoice)}`;
+      // resultSection.querySelector('.ai-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
+
       
     } else{
       let clonedData = cloneResultSet()
@@ -42,6 +49,7 @@ function makeNewResult(dataFromFetch) {
       //The expanded results section
       clonedData.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`
       clonedData.querySelector('.player-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
+      clonedData.querySelector('.player-moves').textContent = `Player Choices: ${formatMoveList(dataFromFetch[i].userChoice)}`;
       resultParent.appendChild(clonedData)
     }
   }
