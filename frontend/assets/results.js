@@ -85,7 +85,7 @@ function makeNewResult(dataFromFetch) {
 }
 // Expand or shrink a set of results called within adELs function
 function expandShrink(ev) {
-  const clickedResultSet = ev.currentTarget;
+  const clickedResultSet = ev.currentTarget; 
   if (clickedResultSet.querySelector('.results-expanded').classList.contains('hidden')){
     clickedResultSet.querySelector('.results-expanded').classList.remove('hidden')
     clickedResultSet.querySelector('.results-expanded').classList.add('visible')
