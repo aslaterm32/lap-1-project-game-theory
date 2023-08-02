@@ -83,6 +83,30 @@ function makeNewResult(dataFromFetch) {
     }
   }
 }
+// Expand or shrink a set of results called within adELs function
+function expandShrink(ev) {
+  const clickedResultSet = ev.currentTarget;
+  if (clickedResultSet.querySelector('.results-expanded').classList.contains('hidden')){
+    clickedResultSet.querySelector('.results-expanded').classList.remove('hidden')
+    clickedResultSet.querySelector('.results-expanded').classList.add('visible')
+  } else {
+    clickedResultSet.querySelector('.results-expanded').classList.remove('visible')
+    clickedResultSet.querySelector('.results-expanded').classList.add('hidden')
+  }
+ 
+}
+/* Function called within async function to ensure loading 
+*WILL EXPERIMENT WITH MOVING IT OUT OF THE ASYNC TO IMPROVE SPEED* 
+*/
+function addELs() {
+  const allResults = document.querySelectorAll('.results-section')
+  allResults.forEach(resultSet => {
+    resultSet.addEventListener('click', e => {
+      expandShrink(e)
+    });
+  
+  })
+}
 
 // Expand or shrink a set of results called within adELs function
 function expandShrink(ev) {
