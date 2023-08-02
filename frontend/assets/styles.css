@@ -20,6 +20,7 @@ header {
   /* height: auto; */
   background-color: #ffe9c8;
   margin-bottom: 1em;
+  box-shadow: 0px 1px 7px #554546
 }
 
 #logo {
@@ -77,28 +78,35 @@ button:hover {
   border-radius: 2em;
   line-height: 1.5em;
   margin-bottom: 1em;
-  /* display: flex;
-  flex-direction: column; */
 }
 
 .results-win {
   background-color: #78e35b;
+  border-color: black;
+  /* border-color: #b4b6d3; */      /*Not sure which one looks better*/
+  border-style: solid;
 
 }
 
 .results-loss {
   background-color: #b84242;
+  border-color: black;
+  /* border-color: #b4b6d3; */
+  border-style: solid;
 }
 
 .results-draw {
   background-color: #bfc0c9;
+  border-color: black;
+  /* border-color: #b4b6d3; */
+  border-style: solid;
 }
 
 .game-num{
   text-align: center;
 }
 .hidden {
-  display: none;    /* elements no longer displayed with the class*/
+  display: none;
 }
 
 .date-time-container{
