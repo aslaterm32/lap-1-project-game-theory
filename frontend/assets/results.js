@@ -1,50 +1,59 @@
-const resultSet = document.querySelector(".result-set");
-const shrunk = document.querySelector(".results-shrunk")
+const resultSection = document.querySelector('.results-section')
+const resultParent = document.querySelector('main')
 
+// simple clone of the first section (works as long as all elements are present at loadtime)
 function cloneResultSet() {
-    const resultSetClone = resultSet.cloneNode(true)
+    const resultSetClone = resultSection.cloneNode(true)
+    return resultSetClone
 }
 
-function makeNewResult() {
-    cloneResultSet
+// reformatting timestamps (called within the makeNewResult function)
+function processTimestamp(resultTS) {
+  const year = resultTS.slice(0,4)
+  const month = resultTS.slice(5,7)
+  const day = resultTS.slice(8,10)
+  const time = resultTS.slice(11,19)
+  newTimestamp = day.concat("/", month, "/", year, "  ", time)
+  return newTimestamp
 }
 
 
-// document.addEventListener("load", )
+function makeNewResult(dataFromFetch) {
+  let formattedTimestamp = ""
+  for (let i = 0; i < dataFromFetch.length; i++){
+    if (resultSection.querySelector('.game-num').textContent != 'Game 1'){
+      resultSection.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`;
+      resultSection.querySelector('.completion-title').textContent = 'Completed: ';
+      formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
+      resultSection.querySelector('.completion-date-time-data').textContent = formattedTimestamp
+      
+    } else{
+      let clonedData = cloneResultSet()
+      clonedData.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`
+      formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
+      clonedData.querySelector('.completion-date-time-data').textContent = formattedTimestamp
+      resultParent.appendChild(clonedData)
+    }
+  }
+}
 
-// async function getResults(){
-//     let resultsList = []
-//     const fetchedResults = await fetch ("http://localhost:3000/results")
-
-//     const result = await fetchedResults.json()
-
-// }
-
-
-// let results = getResults()
-
-
-// async function getResults() {
-//     const result = await fetch("http://localhost:3000/results")
-//         .then((resp) => {
-//             resp.json()
-//         })
-//         .catch((e) => console.log(e))
-// }
-
-// let results = getResults()
-// console.log(results)
-
+//The starting function that links into the others.
 async function getResults() {
+  let newData = []
     try{
-      const result = await fetch("https://game-theory-d7wp.onrender.com/")
+      const result = await fetch("https://game-theory-d7wp.onrender.com/results")
       const data = await result.json()
-      return data
+      for (const gameDataset of data) {
+        newData.push(gameDataset)
+      }
+      makeNewResult(newData)
+
     } catch(e) {
       console.log(e)
     }
   }
-  
-  let results = getResults();
 
-  
+getResults();
+
+
+// feel free to use console logs to see how the data changes along the way
