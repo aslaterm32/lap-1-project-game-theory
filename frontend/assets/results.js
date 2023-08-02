@@ -69,14 +69,14 @@ function makeNewResult(dataFromFetch) {
       clonedData.querySelector('.ai-revenue').textContent = `AI Revenue: £${dataFromFetch[i].appScore}`;
       clonedData.querySelector('.ai-moves').textContent = `AI Choices: ${formatMoveList(dataFromFetch[i].appChoice)}`;
 
-      resultSection.classList.remove('results-win', 'results-loss', 'results-draw');
+      clonedData.classList.remove('results-win', 'results-loss', 'results-draw');
 
       if (dataFromFetch[i].userWin === 'win') {
-        resultSection.classList.add('results-win');
+        clonedData.classList.add('results-win');
       } else if (dataFromFetch[i].userWin === 'loss') {
-        resultSection.classList.add('results-loss');
+        clonedData.classList.add('results-loss');
       } else if (dataFromFetch[i].userWin === 'draw') {
-        resultSection.classList.add('results-draw');
+        clonedData.classList.add('results-draw');
       }
 
       resultParent.appendChild(clonedData)
