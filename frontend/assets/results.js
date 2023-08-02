@@ -18,7 +18,7 @@ function processTimestamp(resultTS) {
 }
 
 function capitaliseFirst(word){
-  
+  // to be done later (presentation only, not imperative)
 }
 
 function formatMoveList(moveSet) {
