@@ -9,6 +9,7 @@ const gameObject = {
     appScore: [0],
     appChoice: [],
     duration: [0],
+    userWin: "",
 }
 
 const startTime = new Date()
@@ -60,11 +61,17 @@ function handleButtonPressed(event) {
         updateUI()
     }
     if (currentRound >= 10) {
+        if (gameObject.userScore[0] == gameObject.appScore[0]){
+            gameObject.userWin = 'draw';
+        } else if (gameObject.userScore[0] < gameObject.appScore[0]){
+            gameObject.userWin = 'loss';
+        } else {
+            gameObject.userWin = 'win'
+        }
         const endTime = new Date()
         resultDuration = endTime - startTime
         resultDuration = resultDuration / 1000
         gameObject.duration = resultDuration
-        console.log(gameObject)
         postObject(gameObject)
     }
 }

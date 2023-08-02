@@ -45,21 +45,32 @@ h2 {
   display: flex;
   justify-content: space-evenly;
 }
+
 button {
   margin: 1em;
   padding: 1em;
   display: inline;
   min-width: 8em;
   border-radius: 1em;
+  border-color: #555454;
+  box-shadow: 3px 3px 5px #554546;
 }
 
 button:hover {
   background-color: #ddd;
 }
+
+#buttonHigh {
+  background-color: #A0ECE3;
+}
+
+#buttonLow {
+  background-color: #A0BEEC;
+}
 /* RESULTS SECTION */
 
 .results-section {
-  background-color: #aaa;
+  
   text-align: left;
   padding: 1em 2em;
   border-radius: 2em;
@@ -67,6 +78,19 @@ button:hover {
   margin-bottom: 1em;
   /* display: flex;
   flex-direction: column; */
+}
+
+.results-win {
+  background-color: #78e35b;
+
+}
+
+.results-loss {
+  background-color: #b84242;
+}
+
+.results-draw {
+  background-color: #bfc0c9;
 }
 
 .game-num{

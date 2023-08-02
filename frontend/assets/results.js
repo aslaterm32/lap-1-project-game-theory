@@ -31,6 +31,7 @@ function formatMoveList(moveSet) {
 
 function makeNewResult(dataFromFetch) {
   let formattedTimestamp = ""
+  
   for (let i = 0; i < dataFromFetch.length; i++){
     if (resultSection.querySelector('.game-num').textContent != 'Game 1'){
       resultSection.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`;
@@ -45,22 +46,68 @@ function makeNewResult(dataFromFetch) {
       resultSection.querySelector('.ai-revenue').textContent = `AI Revenue: £${dataFromFetch[i].appScore}`;
       resultSection.querySelector('.ai-moves').textContent = `AI Choices: ${formatMoveList(dataFromFetch[i].appChoice)}`;
 
-      
-    } else{
+      resultSection.classList.remove('results-win', 'results-loss', 'results-draw');
+
+      if (dataFromFetch[i].userWin === 'win') {
+        resultSection.classList.add('results-win');
+      } else if (dataFromFetch[i].userWin === 'loss') {
+        resultSection.classList.add('results-loss');
+      } else if (dataFromFetch[i].userWin === 'draw') {
+        resultSection.classList.add('results-draw');
+      }
+
+    } else {
       let clonedData = cloneResultSet()
       clonedData.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`
       formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
       clonedData.querySelector('.completion-date-time-data').textContent = formattedTimestamp
+      
       //The expanded results section
       clonedData.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`
       clonedData.querySelector('.player-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
       clonedData.querySelector('.player-moves').textContent = `Player Choices: ${formatMoveList(dataFromFetch[i].userChoice)}`;
       clonedData.querySelector('.ai-revenue').textContent = `AI Revenue: £${dataFromFetch[i].appScore}`;
       clonedData.querySelector('.ai-moves').textContent = `AI Choices: ${formatMoveList(dataFromFetch[i].appChoice)}`;
+
+      resultSection.classList.remove('results-win', 'results-loss', 'results-draw');
+
+      if (dataFromFetch[i].userWin === 'win') {
+        resultSection.classList.add('results-win');
+      } else if (dataFromFetch[i].userWin === 'loss') {
+        resultSection.classList.add('results-loss');
+      } else if (dataFromFetch[i].userWin === 'draw') {
+        resultSection.classList.add('results-draw');
+      }
+
       resultParent.appendChild(clonedData)
     }
   }
 }
+// Expand or shrink a set of results called within adELs function
+function expandShrink(ev) {
+  const clickedResultSet = ev.currentTarget; 
+  if (clickedResultSet.querySelector('.results-expanded').classList.contains('hidden')){
+    clickedResultSet.querySelector('.results-expanded').classList.remove('hidden')
+    clickedResultSet.querySelector('.results-expanded').classList.add('visible')
+  } else {
+    clickedResultSet.querySelector('.results-expanded').classList.remove('visible')
+    clickedResultSet.querySelector('.results-expanded').classList.add('hidden')
+  }
+ 
+}
+/* Function called within async function to ensure loading 
+*WILL EXPERIMENT WITH MOVING IT OUT OF THE ASYNC TO IMPROVE SPEED* 
+*/
+function addELs() {
+  const allResults = document.querySelectorAll('.results-section')
+  allResults.forEach(resultSet => {
+    resultSet.addEventListener('click', e => {
+      expandShrink(e)
+    });
+  
+  })
+}
+
 // Expand or shrink a set of results called within adELs function
 function expandShrink(ev) {
   const clickedResultSet = ev.currentTarget;
@@ -71,7 +118,6 @@ function expandShrink(ev) {
     clickedResultSet.querySelector('.results-expanded').classList.remove('visible')
     clickedResultSet.querySelector('.results-expanded').classList.add('hidden')
   }
- 
 }
 /* Function called within async function to ensure loading 
 *WILL EXPERIMENT WITH MOVING IT OUT OF THE ASYNC TO IMPROVE SPEED* 
@@ -95,6 +141,9 @@ async function getResults() {
       for (const gameDataset of data) {
         newData.push(gameDataset)
       }
+
+      resultSection.classList.remove('results-win', 'results-loss', 'results-draw');
+
       makeNewResult(newData)
       addELs()
 
@@ -104,7 +153,3 @@ async function getResults() {
   }
 
 getResults();
-
-
-
-
