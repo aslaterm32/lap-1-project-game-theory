@@ -55,6 +55,18 @@ app.post('/results', (req, res) => {
     })
 })
 
+app.delete('/results', (req, res) => {
+    results.splice(0, results.length)
+    fs.writeFile('./backend/results.json', JSON.stringify(results), (error) => {
+        if (error) {
+            console.log(error)
+            res.status(500).send('Failed to clear results')
+        } else {
+            res.status(201).send('Results cleared')
+        }
+    })
+})
+
 // function callback(err) {
 //     if (err) {
 //         console.log(err)
