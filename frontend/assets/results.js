@@ -153,7 +153,3 @@ async function getResults() {
   }
 
 getResults();
-
-
-
-
