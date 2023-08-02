@@ -77,4 +77,16 @@ async function getResults() {
 getResults();
 
 
+
+
 // feel free to use console logs to see how the data changes along the way
+function expandShrink(ev) {
+  const clickedResultSet = e.currentTarget;
+  
+}
+
+resultSection.addEventListener('click', e => {
+  expandShrink(e)
+})
+
+
