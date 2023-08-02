@@ -58,7 +58,6 @@ function makeNewResult(dataFromFetch) {
       clonedData.querySelector('.ai-moves').textContent = `AI Choices: ${formatMoveList(dataFromFetch[i].appChoice)}`;
       resultParent.appendChild(clonedData)
     }
-    for ()
   }
 }
 
