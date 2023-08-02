@@ -64,6 +64,7 @@ button:hover {
   padding: 1em 2em;
   border-radius: 2em;
   line-height: 1.5em;
+  margin-bottom: 1em;
   /* display: flex;
   flex-direction: column; */
 }
@@ -85,7 +86,6 @@ button:hover {
 @media only screen and (min-width: 600px) {
 
   .results-section,
-  .hidden,
   .date-time-container
   {
     display: flex;
@@ -95,7 +95,7 @@ button:hover {
   }
   .results-section{
     min-width: 500px;
-    margin-bottom: 1em;
+    margin-bottom: 2em; /* somehow when I change this one to 2em it works on the non-media*/
   }
  .game-num{
   margin-right: 2em;
