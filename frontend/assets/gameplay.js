@@ -1,7 +1,13 @@
-const buttonHigh = document.querySelector('#buttonHigh')
-const buttonLow = document.querySelector('#buttonLow')
-const infoSection = document.querySelector('#infoSection')
-const scoreSection = document.querySelector('#scoreSection')
+const fs = require('fs')
+const { JSDOM } = require('jsdom')
+
+const html = fs.readFileSync('./frontend/assets/gameplay.html')
+const page = new JSDOM(html)
+
+const buttonHigh = page.window.document.querySelector('#buttonHigh')
+const buttonLow = page.window.document.querySelector('#buttonLow')
+const infoSection = page.window.document.querySelector('#infoSection')
+const scoreSection = page.window.document.querySelector('#scoreSection')
 const gameObject = {
     strategy: '',
     userScore: [0],
@@ -24,7 +30,6 @@ if (buttonHigh) {
     buttonHigh.addEventListener('click', handleButtonPressed)
 }
 if (buttonLow) {
-
     buttonLow.addEventListener('click', handleButtonPressed)
 }
 updateUI()
@@ -162,4 +167,4 @@ async function postObject(obj) {
     window.location.replace('./results.html')
 }
 
-module.exports = {getRandomStrategy, handleButtonPressed, updateUI,storeMove, formatMove, getMarketMove, postObject}
+module.exports = { page, handleButtonPressed, getMarketMove }
