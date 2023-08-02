@@ -30,7 +30,9 @@ function makeNewResult(dataFromFetch) {
       formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
       resultSection.querySelector('.completion-date-time-data').textContent = formattedTimestamp
       //The expanded results section
-      resultSection.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`
+      resultSection.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`;
+      resultSection.querySelector('.player-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
+      
       
     } else{
       let clonedData = cloneResultSet()
@@ -39,6 +41,7 @@ function makeNewResult(dataFromFetch) {
       clonedData.querySelector('.completion-date-time-data').textContent = formattedTimestamp
       //The expanded results section
       clonedData.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`
+      clonedData.querySelector('.player-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
       resultParent.appendChild(clonedData)
     }
   }
