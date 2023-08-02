@@ -17,6 +17,9 @@ function processTimestamp(resultTS) {
   return newTimestamp
 }
 
+function capitaliseFirst(word){
+  
+}
 
 function makeNewResult(dataFromFetch) {
   let formattedTimestamp = ""
@@ -27,13 +30,15 @@ function makeNewResult(dataFromFetch) {
       formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
       resultSection.querySelector('.completion-date-time-data').textContent = formattedTimestamp
       //The expanded results section
-      // const strategy = resultSection.querySelector()
+      resultSection.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`
       
     } else{
       let clonedData = cloneResultSet()
       clonedData.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`
       formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
       clonedData.querySelector('.completion-date-time-data').textContent = formattedTimestamp
+      //The expanded results section
+      clonedData.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`
       resultParent.appendChild(clonedData)
     }
   }
