@@ -26,6 +26,8 @@ function makeNewResult(dataFromFetch) {
       resultSection.querySelector('.completion-title').textContent = 'Completed: ';
       formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
       resultSection.querySelector('.completion-date-time-data').textContent = formattedTimestamp
+      //The expanded results section
+      // const strategy = resultSection.querySelector()
       
     } else{
       let clonedData = cloneResultSet()
