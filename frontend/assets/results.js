@@ -132,20 +132,34 @@ function addELs() {
   })
 }
 
+function noResultMsg(){
+  const noResultMsg = document.createElement('strong');
+  noResultMsg.setAttribute('id','no-result-msg');
+  noResultMsg.textContent = "No Game History"
+  noResultMsg.style.color = "darkred"
+  return (resultParent.appendChild(noResultMsg))
+  
+}
+
 //The starting function that links into the others.
 async function getResults() {
   let newData = []
     try{
-      const result = await fetch('https://game-theory-d7wp.onrender.com/results')
+      const result = await fetch('http://localhost:3000/results')
+      // const result = await fetch('https://game-theory-d7wp.onrender.com/results')
       const data = await result.json()
       for (const gameDataset of data) {
         newData.push(gameDataset)
       }
 
       resultSection.classList.remove('results-win', 'results-loss', 'results-draw');
-
-      makeNewResult(newData)
-      addELs()
+      if (!newData.length) {
+        const message = noResultMsg()
+        console.log(message)
+      } else {
+        makeNewResult(newData)
+        addELs()
+      }
 
     } catch(e) {
       console.log(e)
