@@ -83,8 +83,17 @@ getResults();
 function expandShrink(ev) {
   const clickedResultSet = ev.currentTarget;
   const compactView = clickedResultSet.querySelector('.results-shrunk')
-  if (clickedResultSet.querySelector('div').classList.contains('visible')){
+  if (clickedResultSet.querySelector('.results-expanded').classList.contains('hidden')){
     console.log("hello")
+    // clickedResultSet.querySelector('.results-shrunk').classList.remove('visible')
+    // clickedResultSet.querySelector('div').classList.add('hidden')
+    // //expand results
+    clickedResultSet.querySelector('.results-expanded').classList.remove('hidden')
+    clickedResultSet.querySelector('.results-expanded').classList.add('visible')
+  } else {
+    clickedResultSet.querySelector('.results-expanded').classList.remove('visible')
+    clickedResultSet.querySelector('.results-expanded').classList.add('hidden')
+
   }
  
 }
