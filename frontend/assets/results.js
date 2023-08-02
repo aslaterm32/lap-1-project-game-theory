@@ -82,7 +82,11 @@ getResults();
 // feel free to use console logs to see how the data changes along the way
 function expandShrink(ev) {
   const clickedResultSet = ev.currentTarget;
-
+  const compactView = clickedResultSet.querySelector('.results-shrunk')
+  if (clickedResultSet.querySelector('div').classList.contains('visible')){
+    console.log("hello")
+  }
+ 
 }
 
 resultSection.addEventListener('click', e => {
