@@ -1,6 +1,9 @@
 const resultSection = document.querySelector('.results-section')
 const resultParent = document.querySelector('main')
 
+
+
+
 // simple clone of the first section (works as long as all elements are present at loadtime)
 function cloneResultSet() {
     const resultSetClone = resultSection.cloneNode(true)
@@ -34,9 +37,7 @@ function makeNewResult(dataFromFetch) {
       resultSection.querySelector('.completion-title').textContent = 'Completed: ';
       formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
       resultSection.querySelector('.completion-date-time-data').textContent = formattedTimestamp
-      resultSection.addEventListener('click', e => {
-        expandShrink(e)
-      })
+
       //The expanded results section
       resultSection.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`;
       resultSection.querySelector('.player-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
@@ -60,17 +61,42 @@ function makeNewResult(dataFromFetch) {
     }
   }
 }
+// Expand or shrink a set of results called within adELs function
+function expandShrink(ev) {
+  const clickedResultSet = ev.currentTarget;
+  if (clickedResultSet.querySelector('.results-expanded').classList.contains('hidden')){
+    clickedResultSet.querySelector('.results-expanded').classList.remove('hidden')
+    clickedResultSet.querySelector('.results-expanded').classList.add('visible')
+  } else {
+    clickedResultSet.querySelector('.results-expanded').classList.remove('visible')
+    clickedResultSet.querySelector('.results-expanded').classList.add('hidden')
+  }
+ 
+}
+/* Function called within async function to ensure loading 
+*WILL EXPERIMENT WITH MOVING IT OUT OF THE ASYNC TO IMPROVE SPEED* 
+*/
+function addELs() {
+  const allResults = document.querySelectorAll('.results-section')
+  allResults.forEach(resultSet => {
+    resultSet.addEventListener('click', e => {
+      expandShrink(e)
+    });
+  
+  })
+}
 
 //The starting function that links into the others.
 async function getResults() {
   let newData = []
     try{
-      const result = await fetch("https://game-theory-d7wp.onrender.com/results")
+      const result = await fetch("http://localhost:3000/results")
       const data = await result.json()
       for (const gameDataset of data) {
         newData.push(gameDataset)
       }
       makeNewResult(newData)
+      addELs()
 
     } catch(e) {
       console.log(e)
@@ -81,24 +107,7 @@ getResults();
 
 
 
-
 // feel free to use console logs to see how the data changes along the way
-function expandShrink(ev) {
-  const clickedResultSet = ev.currentTarget;
-  const compactView = clickedResultSet.querySelector('.results-shrunk')
-  if (clickedResultSet.querySelector('.results-expanded').classList.contains('hidden')){
-    clickedResultSet.querySelector('.results-expanded').classList.remove('hidden')
-    clickedResultSet.querySelector('.results-expanded').classList.add('visible')
-  } else {
-    clickedResultSet.querySelector('.results-expanded').classList.remove('visible')
-    clickedResultSet.querySelector('.results-expanded').classList.add('hidden')
 
-  }
- 
-}
-
-resultSection.addEventListener('click', e => {
-  expandShrink(e)
-})
 
 
