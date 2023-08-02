@@ -6,7 +6,7 @@ body {
   align-items: center;
   /* fill the page */
   height: 100vh;
-  background-color: #ddd;
+  background-color: #FFF9F0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -18,13 +18,14 @@ header {
   width: 100vw;
   /* align-items: center; */
   /* height: auto; */
-  background-color: #000;
+  background-color: #ffe9c8;
   margin-bottom: 1em;
 }
 
 #logo {
   height: 100px;
 }
+
 
 #tutorialSection {
   /* breathing */
