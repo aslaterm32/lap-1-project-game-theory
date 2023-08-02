@@ -51,10 +51,19 @@ button {
   display: inline;
   min-width: 8em;
   border-radius: 1em;
+  border-color: #555454
 }
 
 button:hover {
   background-color: #ddd;
+}
+
+#buttonHigh {
+  background-color: #A0ECE3;
+}
+
+#buttonLow {
+  background-color: #A0BEEC;
 }
 /* RESULTS SECTION */
 
