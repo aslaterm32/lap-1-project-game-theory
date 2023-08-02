@@ -45,13 +45,15 @@ h2 {
   display: flex;
   justify-content: space-evenly;
 }
+
 button {
   margin: 1em;
   padding: 1em;
   display: inline;
   min-width: 8em;
   border-radius: 1em;
-  border-color: #555454
+  border-color: #555454;
+  box-shadow: 3px 3px 5px #554546;
 }
 
 button:hover {
@@ -73,12 +75,14 @@ button:hover {
   padding: 1em 2em;
   border-radius: 2em;
   line-height: 1.5em;
+  margin-bottom: 1em;
   /* display: flex;
   flex-direction: column; */
 }
 
 .results-win {
   background-color: #78e35b;
+
 }
 
 .results-loss {
@@ -106,7 +110,6 @@ button:hover {
 @media only screen and (min-width: 600px) {
 
   .results-section,
-  .hidden,
   .date-time-container
   {
     display: flex;
@@ -116,7 +119,7 @@ button:hover {
   }
   .results-section{
     min-width: 500px;
-    margin-bottom: 1em;
+    margin-bottom: 2em; /* somehow when I change this one to 2em it works on the non-media*/
   }
  .game-num{
   margin-right: 2em;
