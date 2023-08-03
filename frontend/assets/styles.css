@@ -20,7 +20,7 @@ header {
   /* height: auto; */
   background-color: #ffe9c8;
   margin-bottom: 1em;
-  box-shadow: 0px 1px 7px #554546
+  box-shadow: 0px 1px 7px #554546     /* Undecided on whether to leave-in or not*/
 }
 
 #logo {
