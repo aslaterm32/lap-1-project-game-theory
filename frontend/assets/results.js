@@ -120,9 +120,8 @@ function expandShrink(ev) {
     clickedResultSet.querySelector('.results-expanded').classList.add('hidden')
   }
 }
-/* Function called within async function to ensure loading 
-*WILL EXPERIMENT WITH MOVING IT OUT OF THE ASYNC TO IMPROVE SPEED* 
-*/
+
+
 function addELs(data) {
   const allResults = document.querySelectorAll('.results-section')
   const delButton = document.querySelector('.deleteResult')
@@ -172,9 +171,3 @@ async function getResults() {
   }
 
 getResults();
-
-
-/*
-da
-
-*/

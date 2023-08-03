@@ -85,31 +85,37 @@ button:hover {
   border-radius: 2em;
   line-height: 1.5em;
   margin-bottom: 1em;
-  border: 1px black solid;
+  /* border: 1px black solid; */
 }
 
 .results-win {
   background-color: #78e35b;
+  border: 1px black solid;
 }
 
 .results-win:hover {
   background-color: #78e35bbb;
+  border: 1px black solid;
 }
 
 .results-loss {
   background-color: #b84242;
+  border: 1px black solid;
 }
 
 .results-loss:hover {
   background-color: #b84242bb;
+  border: 1px black solid;
 }
 
 .results-draw {
   background-color: #bfc0c9;
+  border: 1px black solid;
 }
 
 .results-draw:hover {
   background-color: #bfc0c9aa;
+  border: 1px black solid;
 }
 
 .game-num{
