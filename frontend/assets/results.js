@@ -88,8 +88,25 @@ function makeNewResult(dataFromFetch) {
   }
 }
 
-function deleteResult(ev) {
-  console.log(ev.currentTarget)
+async function resultDeleteGameData(id){
+
+  console.log(typeof(id))
+  const options = {
+      method: 'DELETE',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      // body: data,
+  }
+  await fetch(`https://game-theory-d7wp.onrender.com/results/${id}`, options)
+  window.location.replace('./results.html')
+}
+
+function deleteResult(ev, results) {
+  ev.preventDefault()
+  const id = ev.currentTarget.id
+  resultDeleteGameData(id)
+
 }
 
 // Expand or shrink a set of results called within adELs function
@@ -106,23 +123,17 @@ function expandShrink(ev) {
 /* Function called within async function to ensure loading 
 *WILL EXPERIMENT WITH MOVING IT OUT OF THE ASYNC TO IMPROVE SPEED* 
 */
-function addELs() {
+function addELs(data) {
   const allResults = document.querySelectorAll('.results-section')
-  const allDeleteButtons = document.querySelectorAll('.deleteResult')
+  const delButton = document.querySelector('.deleteResult')
   allResults.forEach(resultSet => {
     resultSet.addEventListener('dblclick', e => {
       expandShrink(e)
     });
-
-    // resultSet.delBtn.addEventListener('click', e => {
-    //   console.log("hello")
-    // })
-  
-  allDeleteButtons.forEach(delBtn => {
-    delBtn.addEventListener('click', event => {
-      // deleteResult(e)
-    }) 
-  })
+    resultSet.querySelector('button').addEventListener('click', ev => {
+      deleteResult(ev, data)
+    })
+    
   })
 }
 
