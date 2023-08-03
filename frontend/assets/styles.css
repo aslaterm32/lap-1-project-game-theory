@@ -63,11 +63,18 @@ button:hover {
 }
 
 #buttonHigh {
-  background-color: #A0ECE3;
+  background-color: #d7eb75ff;
+}
+#buttonHigh:hover {
+  background-color: #d7eb75aa;
 }
 
 #buttonLow {
-  background-color: #A0BEEC;
+  background-color: #c1f8efff;
+}
+
+#buttonLow:hover {
+  background-color: #c1f8efaa;
 }
 /* RESULTS SECTION */
 
@@ -78,28 +85,31 @@ button:hover {
   border-radius: 2em;
   line-height: 1.5em;
   margin-bottom: 1em;
+  border: 1px black solid;
 }
 
 .results-win {
   background-color: #78e35b;
-  border-color: black;
-  /* border-color: #b4b6d3; */      /*Not sure which one looks better*/
-  border-style: solid;
+}
 
+.results-win:hover {
+  background-color: #78e35bbb;
 }
 
 .results-loss {
   background-color: #b84242;
-  border-color: black;
-  /* border-color: #b4b6d3; */
-  border-style: solid;
+}
+
+.results-loss:hover {
+  background-color: #b84242bb;
 }
 
 .results-draw {
   background-color: #bfc0c9;
-  border-color: black;
-  /* border-color: #b4b6d3; */
-  border-style: solid;
+}
+
+.results-draw:hover {
+  background-color: #bfc0c9aa;
 }
 
 .game-num{
