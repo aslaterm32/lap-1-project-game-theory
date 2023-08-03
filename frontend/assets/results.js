@@ -112,12 +112,13 @@ function deleteResult(ev) {
 // Expand or shrink a set of results called within adELs function
 function expandShrink(ev) {
   const clickedResultSet = ev.currentTarget;
-  if (clickedResultSet.querySelector('.results-expanded').classList.contains('hidden')){
-    clickedResultSet.querySelector('.results-expanded').classList.remove('hidden')
-    clickedResultSet.querySelector('.results-expanded').classList.add('visible')
+  const expandedResults = clickedResultSet.querySelector('.results-expanded')
+  if (expandedResults.classList.contains('hidden')){
+    expandedResults.classList.remove('hidden')
+    expandedResults.classList.add('visible')
   } else {
-    clickedResultSet.querySelector('.results-expanded').classList.remove('visible')
-    clickedResultSet.querySelector('.results-expanded').classList.add('hidden')
+    expandedResults.classList.remove('visible')
+    expandedResults.classList.add('hidden')
   }
 }
 
