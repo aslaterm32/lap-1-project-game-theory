@@ -47,7 +47,7 @@ function makeNewResult(dataFromFetch) {
       resultSection.querySelector('.player-moves').textContent = `Player Choices: ${formatMoveList(dataFromFetch[i].userChoice)}`;
       resultSection.querySelector('.ai-revenue').textContent = `AI Revenue: £${dataFromFetch[i].appScore}`;
       resultSection.querySelector('.ai-moves').textContent = `AI Choices: ${formatMoveList(dataFromFetch[i].appChoice)}`;
-
+      resultSection.querySelector('.deleteResult').setAttribute('id',`${dataFromFetch[i].id}`)
       resultSection.classList.remove('results-win', 'results-loss', 'results-draw');
 
       if (dataFromFetch[i].userWin === 'win') {
@@ -70,11 +70,13 @@ function makeNewResult(dataFromFetch) {
       clonedData.querySelector('.player-moves').textContent = `Player Choices: ${formatMoveList(dataFromFetch[i].userChoice)}`;
       clonedData.querySelector('.ai-revenue').textContent = `AI Revenue: £${dataFromFetch[i].appScore}`;
       clonedData.querySelector('.ai-moves').textContent = `AI Choices: ${formatMoveList(dataFromFetch[i].appChoice)}`;
+      clonedData.querySelector('.deleteResult').setAttribute('id',`${dataFromFetch[i].id}`)
 
       clonedData.classList.remove('results-win', 'results-loss', 'results-draw');
 
       if (dataFromFetch[i].userWin === 'win') {
         clonedData.classList.add('results-win');
+        // clonedData.querySelector('classForDelButton').classList.add('cssClassWithStyle')
       } else if (dataFromFetch[i].userWin === 'loss') {
         clonedData.classList.add('results-loss');
       } else if (dataFromFetch[i].userWin === 'draw') {
@@ -85,29 +87,26 @@ function makeNewResult(dataFromFetch) {
     }
   }
 }
-// Expand or shrink a set of results called within adELs function
-function expandShrink(ev) {
-  const clickedResultSet = ev.currentTarget; 
-  if (clickedResultSet.querySelector('.results-expanded').classList.contains('hidden')){
-    clickedResultSet.querySelector('.results-expanded').classList.remove('hidden')
-    clickedResultSet.querySelector('.results-expanded').classList.add('visible')
-  } else {
-    clickedResultSet.querySelector('.results-expanded').classList.remove('visible')
-    clickedResultSet.querySelector('.results-expanded').classList.add('hidden')
+
+async function resultDeleteGameData(id){
+
+  console.log(typeof(id))
+  const options = {
+      method: 'DELETE',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      // body: data,
   }
- 
+  await fetch(`https://game-theory-d7wp.onrender.com/results/${id}`, options)
+  window.location.replace('./results.html')
 }
-/* Function called within async function to ensure loading 
-*WILL EXPERIMENT WITH MOVING IT OUT OF THE ASYNC TO IMPROVE SPEED* 
-*/
-function addELs() {
-  const allResults = document.querySelectorAll('.results-section')
-  allResults.forEach(resultSet => {
-    resultSet.addEventListener('click', e => {
-      expandShrink(e)
-    });
-  
-  })
+
+function deleteResult(ev, results) {
+  ev.preventDefault()
+  const id = ev.currentTarget.id
+  resultDeleteGameData(id)
+
 }
 
 // Expand or shrink a set of results called within adELs function
@@ -124,13 +123,17 @@ function expandShrink(ev) {
 /* Function called within async function to ensure loading 
 *WILL EXPERIMENT WITH MOVING IT OUT OF THE ASYNC TO IMPROVE SPEED* 
 */
-function addELs() {
+function addELs(data) {
   const allResults = document.querySelectorAll('.results-section')
+  const delButton = document.querySelector('.deleteResult')
   allResults.forEach(resultSet => {
     resultSet.addEventListener('click', e => {
       expandShrink(e)
     });
-  
+    resultSet.querySelector('button').addEventListener('click', ev => {
+      deleteResult(ev, data)
+    })
+    
   })
 }
 
@@ -160,7 +163,7 @@ async function getResults() {
         const message = noResultMsg()
       } else {
         makeNewResult(newData)
-        addELs()
+        addELs(newData)
       }
 
     } catch(e) {
@@ -169,3 +172,9 @@ async function getResults() {
   }
 
 getResults();
+
+
+/*
+da
+
+*/

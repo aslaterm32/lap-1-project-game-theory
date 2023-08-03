@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./images/OMG-GT-logo-no-text.svg" type="image/x-icon">
     <link rel="stylesheet" href="bellCSSreset.css" />
     <link rel="stylesheet" href="./styles.css" />
     <script defer src="./results.js"></script>
@@ -21,25 +22,26 @@
     <h1>Results</h1>
     <main>
       <section class="results-section">
-        <!-- <div class="result-set"> -->
           <div class="results-shrunk">
             <h3 class="game-num"></h3>
             <div class="date-time-container">
               <h4 class="completion-title"></h4>
               <p class="completion-date-time-data"></p>
             </div>
+
             <div class="hidden results-expanded">
               <h3 class="strategy-row"></h3>
               <div class="player-row">
-                <div class="player-revenue"></div>
-                <div class="player-moves"></div>
+                <p class="player-revenue"></p>
+                <p class="player-moves"></p>
               </div>
               <div class="ai-row">
-                <div class="ai-revenue"></div>
-                <div class="ai-moves"></div>
+                <p class="ai-revenue"></p>
+                <p class="ai-moves"></p>
               </div>
+              <button class="deleteResult">Delete Result</button>
             </div>
-          <!-- </div> -->
+          </div>
         </section>      
     </main>
   </body>
