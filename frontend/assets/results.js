@@ -76,7 +76,6 @@ function makeNewResult(dataFromFetch) {
 
       if (dataFromFetch[i].userWin === 'win') {
         clonedData.classList.add('results-win');
-        // clonedData.querySelector('classForDelButton').classList.add('cssClassWithStyle')
       } else if (dataFromFetch[i].userWin === 'loss') {
         clonedData.classList.add('results-loss');
       } else if (dataFromFetch[i].userWin === 'draw') {
