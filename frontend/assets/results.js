@@ -21,7 +21,7 @@ function processTimestamp(resultTS) {
 }
 
 function capitaliseFirst(word){
-  // to be done later (presentation only, not imperative)
+  return (word.charAt(0).toLocaleUpperCase() + word.slice(1))
 }
 
 function formatMoveList(moveSet) {
@@ -31,16 +31,18 @@ function formatMoveList(moveSet) {
 
 function makeNewResult(dataFromFetch) {
   let formattedTimestamp = ""
-  
-  for (let i = 0; i < dataFromFetch.length; i++){
-    if (resultSection.querySelector('.game-num').textContent != 'Game 1'){
+  let dataLength = dataFromFetch.length
+
+  for (let i = (dataLength-1); i >= 0; i--){
+    //load data in from newest to oldest game attempt
+    if (resultSection.querySelector('.game-num').textContent != `Game ${(dataLength)}`){
       resultSection.querySelector('.game-num').textContent = `Game ${(dataFromFetch[i].id)+1}`;
       resultSection.querySelector('.completion-title').textContent = 'Completed: ';
       formattedTimestamp = processTimestamp(dataFromFetch[i].timestamp)
       resultSection.querySelector('.completion-date-time-data').textContent = formattedTimestamp
 
       //The expanded results section
-      resultSection.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`;
+      resultSection.querySelector('.strategy-row').textContent = `Strategy: ${capitaliseFirst(dataFromFetch[i].strategy)}`;
       resultSection.querySelector('.player-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
       resultSection.querySelector('.player-moves').textContent = `Player Choices: ${formatMoveList(dataFromFetch[i].userChoice)}`;
       resultSection.querySelector('.ai-revenue').textContent = `AI Revenue: £${dataFromFetch[i].appScore}`;
@@ -63,7 +65,7 @@ function makeNewResult(dataFromFetch) {
       clonedData.querySelector('.completion-date-time-data').textContent = formattedTimestamp
       
       //The expanded results section
-      clonedData.querySelector('.strategy-row').textContent = `Strategy: ${dataFromFetch[i].strategy}`
+      clonedData.querySelector('.strategy-row').textContent = `Strategy: ${capitaliseFirst(dataFromFetch[i].strategy)}`
       clonedData.querySelector('.player-revenue').textContent = `Player Revenue: £${dataFromFetch[i].userScore}`;
       clonedData.querySelector('.player-moves').textContent = `Player Choices: ${formatMoveList(dataFromFetch[i].userChoice)}`;
       clonedData.querySelector('.ai-revenue').textContent = `AI Revenue: £${dataFromFetch[i].appScore}`;
@@ -132,10 +134,20 @@ function addELs() {
   })
 }
 
+function noResultMsg(){
+  const noResultMsg = document.createElement('strong');
+  noResultMsg.setAttribute('id','no-result-msg');
+  noResultMsg.textContent = "No Game History"
+  noResultMsg.style.color = "darkred"
+  return (resultParent.appendChild(noResultMsg))
+  
+}
+
 //The starting function that links into the others.
 async function getResults() {
   let newData = []
     try{
+      // const result = await fetch('http://localhost:3000/results')
       const result = await fetch('https://game-theory-d7wp.onrender.com/results')
       const data = await result.json()
       for (const gameDataset of data) {
@@ -143,9 +155,13 @@ async function getResults() {
       }
 
       resultSection.classList.remove('results-win', 'results-loss', 'results-draw');
-
-      makeNewResult(newData)
-      addELs()
+      if (!newData.length) {
+        //temporary message if there are no results
+        const message = noResultMsg()
+      } else {
+        makeNewResult(newData)
+        addELs()
+      }
 
     } catch(e) {
       console.log(e)

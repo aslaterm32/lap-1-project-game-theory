@@ -6,7 +6,7 @@ body {
   align-items: center;
   /* fill the page */
   height: 100vh;
-  background-color: #ddd;
+  background-color: #FFF9F0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -18,13 +18,15 @@ header {
   width: 100vw;
   /* align-items: center; */
   /* height: auto; */
-  background-color: #000;
+  background-color: #ffe9c8;
   margin-bottom: 1em;
+  box-shadow: 0px 1px 7px #554546     /* Undecided on whether to leave-in or not*/
 }
 
 #logo {
   height: 100px;
 }
+
 
 #tutorialSection {
   /* breathing */
@@ -76,34 +78,46 @@ button:hover {
   border-radius: 2em;
   line-height: 1.5em;
   margin-bottom: 1em;
-  /* display: flex;
-  flex-direction: column; */
 }
 
 .results-win {
   background-color: #78e35b;
+  border-color: black;
+  /* border-color: #b4b6d3; */      /*Not sure which one looks better*/
+  border-style: solid;
 
 }
 
 .results-loss {
   background-color: #b84242;
+  border-color: black;
+  /* border-color: #b4b6d3; */
+  border-style: solid;
 }
 
 .results-draw {
   background-color: #bfc0c9;
+  border-color: black;
+  /* border-color: #b4b6d3; */
+  border-style: solid;
 }
 
 .game-num{
   text-align: center;
 }
 .hidden {
-  display: none;    /* elements no longer displayed with the class*/
+  display: none;
 }
 
 .date-time-container{
   display: flex;
   flex-direction: row;
   
+}
+
+.delete {
+  height: 30px;
+  align-items: center;
 }
 
 /* Responsive */
@@ -125,15 +139,3 @@ button:hover {
   margin-right: 2em;
  }
 }
-
-/* .results-flex-row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-
-/* .results-table {
-  background-color: rgb(207, 207, 207);
-  padding: 15px;
-  border-radius: 20%;
-} */
