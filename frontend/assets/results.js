@@ -127,7 +127,7 @@ function addELs(data) {
   const allResults = document.querySelectorAll('.results-section')
   const delButton = document.querySelector('.deleteResult')
   allResults.forEach(resultSet => {
-    resultSet.addEventListener('dblclick', e => {
+    resultSet.addEventListener('click', e => {
       expandShrink(e)
     });
     resultSet.querySelector('button').addEventListener('click', ev => {
