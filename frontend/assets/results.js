@@ -102,7 +102,7 @@ async function resultDeleteGameData(id){
   window.location.replace('./results.html')
 }
 
-function deleteResult(ev, results) {
+function deleteResult(ev) {
   ev.preventDefault()
   const id = ev.currentTarget.id
   resultDeleteGameData(id)
@@ -122,7 +122,7 @@ function expandShrink(ev) {
 }
 
 
-function addELs(data) {
+function addELs() {
   const allResults = document.querySelectorAll('.results-section')
   const delButton = document.querySelector('.deleteResult')
   allResults.forEach(resultSet => {
@@ -130,7 +130,7 @@ function addELs(data) {
       expandShrink(e)
     });
     resultSet.querySelector('button').addEventListener('click', ev => {
-      deleteResult(ev, data)
+      deleteResult(ev)
     })
     
   })
@@ -162,7 +162,7 @@ async function getResults() {
         const message = noResultMsg()
       } else {
         makeNewResult(newData)
-        addELs(newData)
+        addELs()
       }
 
     } catch(e) {
