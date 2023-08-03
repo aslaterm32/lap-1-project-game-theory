@@ -147,8 +147,8 @@ function noResultMsg(){
 async function getResults() {
   let newData = []
     try{
-      const result = await fetch('http://localhost:3000/results')
-      // const result = await fetch('https://game-theory-d7wp.onrender.com/results')
+      // const result = await fetch('http://localhost:3000/results')
+      const result = await fetch('https://game-theory-d7wp.onrender.com/results')
       const data = await result.json()
       for (const gameDataset of data) {
         newData.push(gameDataset)
