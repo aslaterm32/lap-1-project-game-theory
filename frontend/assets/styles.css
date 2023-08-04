@@ -11,16 +11,14 @@ body {
 }
 
 header {
-  /* center */
+
   display: flex;
   justify-content: center;
   /* full width */
   width: 100vw;
-  /* align-items: center; */
-  /* height: auto; */
   background-color: #ffe9c8;
   margin-bottom: 1em;
-  box-shadow: 0px 1px 7px #554546     /* Undecided on whether to leave-in or not*/
+  box-shadow: 0px 1px 7px #554546
 }
 
 #logo {
@@ -76,6 +74,7 @@ button:hover {
 #buttonLow:hover {
   background-color: #c1f8efaa;
 }
+
 /* RESULTS SECTION */
 
 .results-section {
@@ -85,31 +84,36 @@ button:hover {
   border-radius: 2em;
   line-height: 1.5em;
   margin-bottom: 1em;
-  border: 1px black solid;
 }
 
 .results-win {
   background-color: #78e35b;
+  border: 1px black solid;
 }
 
 .results-win:hover {
   background-color: #78e35bbb;
+  border: 1px black solid;
 }
 
 .results-loss {
-  background-color: #b84242;
+  background-color: #c54747;
+  border: 1px black solid;
 }
 
 .results-loss:hover {
   background-color: #b84242bb;
+  border: 1px black solid;
 }
 
 .results-draw {
   background-color: #bfc0c9;
+  border: 1px black solid;
 }
 
 .results-draw:hover {
   background-color: #bfc0c9aa;
+  border: 1px black solid;
 }
 
 .game-num{
@@ -136,8 +140,9 @@ button:hover {
 }
 
 .deleteResult:hover {
-  background-color: #ddd;
+  background-color: #fd7b7b;
 }
+
 
 /* Responsive */
 @media only screen and (min-width: 600px) {
@@ -152,7 +157,7 @@ button:hover {
   }
   .results-section{
     min-width: 500px;
-    margin-bottom: 2em; /* somehow when I change this one to 2em it works on the non-media*/
+    margin-bottom: 2em;
   }
  .game-num{
   margin-right: 2em;

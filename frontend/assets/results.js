@@ -76,7 +76,6 @@ function makeNewResult(dataFromFetch) {
 
       if (dataFromFetch[i].userWin === 'win') {
         clonedData.classList.add('results-win');
-        // clonedData.querySelector('classForDelButton').classList.add('cssClassWithStyle')
       } else if (dataFromFetch[i].userWin === 'loss') {
         clonedData.classList.add('results-loss');
       } else if (dataFromFetch[i].userWin === 'draw') {
@@ -102,7 +101,7 @@ async function resultDeleteGameData(id){
   window.location.replace('./results.html')
 }
 
-function deleteResult(ev, results) {
+function deleteResult(ev) {
   ev.preventDefault()
   const id = ev.currentTarget.id
   resultDeleteGameData(id)
@@ -112,18 +111,18 @@ function deleteResult(ev, results) {
 // Expand or shrink a set of results called within adELs function
 function expandShrink(ev) {
   const clickedResultSet = ev.currentTarget;
-  if (clickedResultSet.querySelector('.results-expanded').classList.contains('hidden')){
-    clickedResultSet.querySelector('.results-expanded').classList.remove('hidden')
-    clickedResultSet.querySelector('.results-expanded').classList.add('visible')
+  const expandedResults = clickedResultSet.querySelector('.results-expanded')
+  if (expandedResults.classList.contains('hidden')){
+    expandedResults.classList.remove('hidden')
+    expandedResults.classList.add('visible')
   } else {
-    clickedResultSet.querySelector('.results-expanded').classList.remove('visible')
-    clickedResultSet.querySelector('.results-expanded').classList.add('hidden')
+    expandedResults.classList.remove('visible')
+    expandedResults.classList.add('hidden')
   }
 }
-/* Function called within async function to ensure loading 
-*WILL EXPERIMENT WITH MOVING IT OUT OF THE ASYNC TO IMPROVE SPEED* 
-*/
-function addELs(data) {
+
+
+function addELs() {
   const allResults = document.querySelectorAll('.results-section')
   const delButton = document.querySelector('.deleteResult')
   allResults.forEach(resultSet => {
@@ -131,7 +130,7 @@ function addELs(data) {
       expandShrink(e)
     });
     resultSet.querySelector('button').addEventListener('click', ev => {
-      deleteResult(ev, data)
+      deleteResult(ev)
     })
     
   })
@@ -163,7 +162,7 @@ async function getResults() {
         const message = noResultMsg()
       } else {
         makeNewResult(newData)
-        addELs(newData)
+        addELs()
       }
 
     } catch(e) {
@@ -172,9 +171,3 @@ async function getResults() {
   }
 
 getResults();
-
-
-/*
-da
-
-*/
