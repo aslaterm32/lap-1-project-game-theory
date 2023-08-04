@@ -12,12 +12,12 @@ app.use(express.json())
 app.use(logger)
 
 app.get('/', (req, res) => {
-    res.send('Welcome to game theory API')
+    res.status(200).send('Welcome to game theory API')
 })
 
 app.get('/results', (req, res) => {
     try {
-        res.send(results)
+        res.status(200).send(results)
     } catch (error) {
         next(error)
     }
@@ -50,7 +50,7 @@ app.post('/results', (req, res) => {
             console.log(error)
             res.status(500).send('Failed to add result')
         } else {
-            res.status(201).send('Result added')
+            res.status(200).send(newResult)
         }
     })
 })
@@ -62,7 +62,7 @@ app.delete('/results', (req, res) => {
             console.log(error)
             res.status(500).send('Failed to clear results')
         } else {
-            res.status(201).send('Results cleared')
+            res.status(200).send('Results cleared')
         }
     })
 })
@@ -78,7 +78,7 @@ app.delete('/results/:id', (req, res) => {
             console.log(error)
             res.status(500).send('Failed to delete result')
         } else {
-            res.status(201).send('Result deleted')
+            res.status(200).send('Result deleted')
         }
     })
 })
