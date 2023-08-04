@@ -1,5 +1,6 @@
 const fs = require('fs')
-const { JSDOM } = require('jsdom')
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 const html = fs.readFileSync('./frontend/assets/gameplay.html')
 const page = new JSDOM(html)
