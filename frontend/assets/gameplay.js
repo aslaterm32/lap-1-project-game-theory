@@ -9,6 +9,7 @@ const gameObject = {
     appScore: [0],
     appChoice: [],
     duration: [0],
+    userWin: "",
 }
 
 const startTime = new Date()
@@ -56,13 +57,21 @@ function handleButtonPressed(event) {
         gameObject.appScore[0] += appProfit
     }
     currentRound++
-    updateUI()
+    if (currentRound < 10) {
+        updateUI()
+    }
     if (currentRound >= 10) {
+        if (gameObject.userScore[0] == gameObject.appScore[0]){
+            gameObject.userWin = 'draw';
+        } else if (gameObject.userScore[0] < gameObject.appScore[0]){
+            gameObject.userWin = 'loss';
+        } else {
+            gameObject.userWin = 'win'
+        }
         const endTime = new Date()
         resultDuration = endTime - startTime
         resultDuration = resultDuration / 1000
         gameObject.duration = resultDuration
-        console.log(gameObject)
         postObject(gameObject)
     }
 }
@@ -144,6 +153,6 @@ async function postObject(obj) {
         body: data,
     }
     console.log(data)
-    await fetch(`http://127.0.0.1:3000/results`, options)
+    await fetch('https://game-theory-d7wp.onrender.com/results', options)
     window.location.replace('./results.html')
 }

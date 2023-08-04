@@ -12,12 +12,12 @@ app.use(express.json())
 app.use(logger)
 
 app.get('/', (req, res) => {
-    res.send('Welcome to game theory API')
+    res.status(200).send('Welcome to game theory API')
 })
 
 app.get('/results', (req, res) => {
     try {
-        res.send(results)
+        res.status(200).send(results)
     } catch (error) {
         next(error)
     }
@@ -50,7 +50,35 @@ app.post('/results', (req, res) => {
             console.log(error)
             res.status(500).send('Failed to add result')
         } else {
-            res.status(201).send('Result added')
+            res.status(200).send(newResult)
+        }
+    })
+})
+
+app.delete('/results', (req, res) => {
+    results.splice(0, results.length)
+    fs.writeFile('./backend/results.json', JSON.stringify(results), (error) => {
+        if (error) {
+            console.log(error)
+            res.status(500).send('Failed to clear results')
+        } else {
+            res.status(200).send('Results cleared')
+        }
+    })
+})
+
+app.delete('/results/:id', (req, res) => {
+    const resultId = req.params.id
+    results.splice(resultId, 1)
+    for (let i = 0; i < results.length; i++) {
+        results[i].id = i
+    }
+    fs.writeFile('./backend/results.json', JSON.stringify(results), (error) => {
+        if (error) {
+            console.log(error)
+            res.status(500).send('Failed to delete result')
+        } else {
+            res.status(200).send('Result deleted')
         }
     })
 })
